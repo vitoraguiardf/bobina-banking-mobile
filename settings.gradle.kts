@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Bobina Bancking"
+rootProject.name = "Bobina Banking"
 include(":app")

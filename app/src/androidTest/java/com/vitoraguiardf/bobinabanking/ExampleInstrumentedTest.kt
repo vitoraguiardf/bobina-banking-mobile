@@ -1,4 +1,4 @@
-package com.vitoraguiardf.bobinabancking
+package com.vitoraguiardf.bobinabanking
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,4 +1,4 @@
-package com.vitoraguiardf.bobinabancking
+package com.vitoraguiardf.bobinabanking
 
 import androidx.appcompat.app.AppCompatActivity
 

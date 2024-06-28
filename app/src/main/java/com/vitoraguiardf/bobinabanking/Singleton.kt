@@ -1,4 +1,4 @@
-package com.vitoraguiardf.bobinabancking
+package com.vitoraguiardf.bobinabanking
 
 import android.app.Application
 

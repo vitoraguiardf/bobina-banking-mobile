@@ -1,11 +1,11 @@
-package com.vitoraguiardf.bobinabancking
+package com.vitoraguiardf.bobinabanking
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.vitoraguiardf.bobinabancking.databinding.ActivityMainBinding
+import com.vitoraguiardf.bobinabanking.databinding.ActivityMainBinding
 
 class MainActivity : CustomActivity() {
     private lateinit var view: ActivityMainBinding

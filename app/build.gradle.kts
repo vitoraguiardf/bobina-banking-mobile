@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.vitoraguiardf.bobinabancking"
+    namespace = "com.vitoraguiardf.bobinabanking"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.vitoraguiardf.bobinabancking"
+        applicationId = "com.vitoraguiardf.bobinabanking"
         minSdk = 28
         targetSdk = 34
         versionCode = 1

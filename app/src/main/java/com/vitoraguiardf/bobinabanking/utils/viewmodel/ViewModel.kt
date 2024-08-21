@@ -27,6 +27,7 @@ open class ViewModel<Progress, Result, FormValidator>(
         log("FAILED", throwable.message.toString(), throwable.stackTraceToString())
         dispatchMain {
             this@ViewModel.form.internalState.value = FormState.FAILED
+            this@ViewModel.form.internalThrowable.value = throwable
         }
     }
 

@@ -10,6 +10,9 @@ data class Form<Progress, Result, FormValidator>(
     // State
     internal val internalState: MutableLiveData<FormState> = MutableLiveData<FormState>(),
     val state: LiveData<FormState> = internalState,
+    // Throwable
+    internal val internalThrowable: MutableLiveData<Throwable> = MutableLiveData<Throwable>(),
+    val throwable: LiveData<Throwable> = internalThrowable,
     // Validator
     internal val internalValidationError: MutableLiveData<FormValidator> = MutableLiveData<FormValidator>(),
     val validationError: LiveData<FormValidator> = internalValidationError,

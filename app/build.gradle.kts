@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -45,6 +46,30 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.exifinterface)
+    implementation(libs.androidx.annotation)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+
+    // Retrofit2
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // Android Room
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(libs.androidx.room.compiler)
+    // ksp("androidx.room:room-compiler:$roomVersion")       // To use Kotlin Symbol Processing (KSP)
+    implementation(libs.androidx.room.ktx)                   // optional - Kotlin Extensions and Coroutines support for Room
+    implementation(libs.androidx.room.rxjava2)               // optional - RxJava2 support for Room
+    implementation(libs.androidx.room.rxjava3)               // optional - RxJava3 support for Room
+    implementation(libs.androidx.room.guava)                 // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation(libs.androidx.room.paging)                // optional - Paging 3 Integration
+    implementation(libs.androidx.datastore.preferences.core)   // Android Datastore
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -1,4 +1,4 @@
-package com.vitoraguiardf.bobinabanking
+package com.vitoraguiardf.bobinabanking.utils.adapters
 
 import android.content.Context
 import android.view.ViewGroup

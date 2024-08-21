@@ -1,4 +1,4 @@
-package com.vitoraguiardf.bobinabanking.login
+package com.vitoraguiardf.bobinabanking.ui.login
 
 import android.util.Patterns
 import android.widget.EditText

@@ -1,4 +1,4 @@
-package com.vitoraguiardf.bobinabanking.login
+package com.vitoraguiardf.bobinabanking.ui.login
 
 import android.app.Activity
 import android.os.Bundle

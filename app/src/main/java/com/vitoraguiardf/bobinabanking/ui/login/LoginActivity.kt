@@ -53,6 +53,11 @@ class LoginActivity: CustomActivity<ActivityLoginBinding>() {
             val result = it?: return@Observer
             Toast.makeText(this@LoginActivity, result, Toast.LENGTH_LONG).show()
         })
+        loginViewModel.form.throwable.observe(this@LoginActivity, Observer {
+            val throwable = it?: return@Observer
+            throwable.printStackTrace()
+            Toast.makeText(this@LoginActivity, throwable.message, Toast.LENGTH_LONG).show()
+        })
 
         val textWatcher: TextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {} // ignore

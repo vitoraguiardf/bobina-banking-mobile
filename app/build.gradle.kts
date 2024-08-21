@@ -1,3 +1,7 @@
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -18,8 +22,30 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    fun getProperties(file: String): Properties {
+        if(!rootProject.file(file).exists()) {
+            rootProject.file("app.example.properties")
+                .copyTo(rootProject.file(file))
+        }
+        val properties = Properties()
+        FileInputStream(rootProject.file(file)).let { stream ->
+            properties.load(stream)
+        }
+        return properties
+    }
+
     buildTypes {
+        debug {
+            getProperties("app.development.properties")
+                .forEach { (key, value) ->
+                    resValue("string", key.toString(), value.toString())
+                }
+        }
         release {
+            getProperties("app.production.properties")
+                .forEach { (key, value) ->
+                    resValue("string", key.toString(), value.toString())
+                }
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

@@ -2,6 +2,7 @@ package com.vitoraguiardf.bobinabanking.data.rest
 
 import android.content.Context
 import com.google.gson.GsonBuilder
+import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.utils.enums.HttpStatus
 import okhttp3.ConnectionSpec
 import okhttp3.Interceptor
@@ -9,7 +10,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RestClientConfig(val context: Context) {
+class RestClientConfig(context: Context) {
     private val gson = GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create()
     private val client = OkHttpClient.Builder()
         .connectionSpecs(listOf(
@@ -20,7 +21,7 @@ class RestClientConfig(val context: Context) {
         .addNetworkInterceptor(interceptor())
         .build()
     private val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
-        .baseUrl("http://192.168.0.214:8000/") // .baseUrl(context.getString(R.string.host_name))
+        .baseUrl(context.getString(R.string.server_api))
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(client)
     val retrofit: Retrofit = retrofitBuilder.build()

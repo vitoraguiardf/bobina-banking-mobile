@@ -9,6 +9,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
 import com.vitoraguiardf.bobinabanking.databinding.ActivityLoginBinding
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
@@ -63,7 +64,7 @@ class LoginActivity: CustomActivity<ActivityLoginBinding>() {
         binding.username.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_NEXT) {
                 if (binding.username.text.toString().endsWith("@")) {
-                    binding.username.text.append("gmail.com")
+                    binding.username.text.append(getString(R.string.server_domain))
                 }
             }
             return@setOnEditorActionListener loginViewModel.usernameValidator(binding.username.text.toString()) != null

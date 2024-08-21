@@ -9,7 +9,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RestClient(val context: Context) {
+class RestClientConfig(val context: Context) {
     private val gson = GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create()
     private val client = OkHttpClient.Builder()
         .connectionSpecs(listOf(

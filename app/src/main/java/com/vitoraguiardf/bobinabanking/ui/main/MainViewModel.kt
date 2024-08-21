@@ -1,4 +1,4 @@
-package com.vitoraguiardf.bobinabanking
+package com.vitoraguiardf.bobinabanking.ui.main
 
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.ViewModel
 

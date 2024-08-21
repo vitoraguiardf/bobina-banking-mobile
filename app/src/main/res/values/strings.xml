@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">Bobina Banking</string>
-
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label" translatable="false">First Fragment</string>
     <string name="second_fragment_label" translatable="false">Second Fragment</string>

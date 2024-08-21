@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bobina Banking</string>
+    <string name="action_settings">Definições</string>
+    <string name="next">Próximo</string>
+    <string name="previous">Anterior</string>
+    <string name="title_activity_login">Autenticação</string>
+    <string name="prompt_email">E-mail</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entrar ou Registrar-se</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="welcome">Bem Vindo !</string>
+    <string name="invalid_username">Nome de usuário inválido</string>
+    <string name="invalid_username_digits">Se matrícula, deve conter de 3 a 7 dígitos</string>
+    <string name="invalid_password_content_lowercase">Precisa conter Minúsculas</string>
+    <string name="invalid_password_content_uppercase">Precisa conter Maiúsculas</string>
+    <string name="invalid_password_content_numbers">Precisa conter Números</string>
+    <string name="invalid_password_digits">Sua senha deve conter de 8 a 20 dígitos</string>
+    <string name="invalid_email">O e-mail não é válido</string>
+    <string name="login_failed">Falha no login</string>
+    <string name="action_login">Entrar</string>
+    <string name="action_logout">Sair</string>
+    <string name="services">Serviços</string>
+    <string name="title_activity_home">"Painel de Serviços"</string>
+    <string name="action_search">Pesquisar</string>
+    <string name="action_download">Baixar</string>
+    <string name="action_upload">Enviar</string>
+    <string name="action_take_picture">Tirar Foto</string>
+    <string name="menu_home">Início</string>
+    <string name="menu_gallery">Galeira</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="navigation_drawer_open">Abrir Navegação</string>
+    <string name="navigation_drawer_close">Fechar Navegação</string>
+    <string name="nav_header_title">Inspenção Residencial</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Cabeçalho da Navegação</string>
+    <string name="empty_field">Não Informado</string>
+    <string name="login_remember_me">Manter conectado</string>
+    <string name="action_form">Executando Serviço</string>
+    <string name="address">Endereço</string>
+    <string name="service_order">Solicitação de Serviço</string>
+    <string name="yes">SIM</string>
+    <string name="no">NÃO</string>
+    <string name="open">Abrir</string>
+    <string name="close">Fechar</string>
+</resources>

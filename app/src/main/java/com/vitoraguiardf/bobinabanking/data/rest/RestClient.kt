@@ -2,6 +2,7 @@ package com.vitoraguiardf.bobinabanking.data.rest
 
 import android.content.Context
 import com.google.gson.GsonBuilder
+import com.vitoraguiardf.bobinabanking.utils.enums.HttpStatus
 import okhttp3.ConnectionSpec
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

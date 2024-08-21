@@ -1,4 +1,4 @@
-package com.vitoraguiardf.bobinabanking.data.rest
+package com.vitoraguiardf.bobinabanking.utils.enums
 
 enum class HttpStatus(val code: Int, val message: String) {
     // 1xx: Informational

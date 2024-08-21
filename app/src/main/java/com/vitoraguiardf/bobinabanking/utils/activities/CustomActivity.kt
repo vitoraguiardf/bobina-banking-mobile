@@ -1,4 +1,4 @@
-package com.vitoraguiardf.bobinabanking
+package com.vitoraguiardf.bobinabanking.utils.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,11 +8,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.vitoraguiardf.bobinabanking.Singleton
 
-/**
- * Wrapper for AppCompatActivity adding helpers to activity
- */
-abstract class AbstractCustomActivity<ViewBinding: androidx.viewbinding.ViewBinding>:
+abstract class CustomActivity<ViewBinding: androidx.viewbinding.ViewBinding>:
     AppCompatActivity() {
 
     lateinit var binding: ViewBinding

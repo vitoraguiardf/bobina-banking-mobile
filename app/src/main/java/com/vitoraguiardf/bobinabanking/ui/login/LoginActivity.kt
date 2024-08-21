@@ -9,11 +9,11 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.vitoraguiardf.bobinabanking.AbstractCustomActivity
+import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
 import com.vitoraguiardf.bobinabanking.databinding.ActivityLoginBinding
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
 
-class LoginActivity: AbstractCustomActivity<ActivityLoginBinding>() {
+class LoginActivity: CustomActivity<ActivityLoginBinding>() {
     private lateinit var loginViewModel: LoginViewModel
 
     override fun viewBindingInflate(): ActivityLoginBinding {

@@ -19,13 +19,13 @@ interface AuthInterface {
         @Field("password") password: String
     ): Call<JsonWebToken>
 
-    @GET("auth/me")
+    @POST("auth/me")
     fun me(): Call<User>
 
-    @GET("auth/refresh")
+    @POST("auth/refresh")
     fun refresh(): Call<JsonWebToken>
 
-    @GET("auth/logout")
+    @POST("auth/logout")
     fun logout(): Call<Message>
 
 }

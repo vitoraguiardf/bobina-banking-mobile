@@ -44,4 +44,9 @@
     <string name="open">Abrir</string>
     <string name="close">Fechar</string>
     <string name="action_sign_in_continue">Continuar</string>
+    <string name="latest_records">Últimos lançamentos</string>
+    <string name="balance">Saldo</string>
+    <string name="action_register_usage">Registrar Utilizaçao</string>
+    <string name="action_register_send">Enviar</string>
+    <string name="action_register_receive">Receber</string>
 </resources>

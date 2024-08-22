@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
 import com.vitoraguiardf.bobinabanking.databinding.ActivityMainBinding
+import com.vitoraguiardf.bobinabanking.ui.home.HomeActivity
 import com.vitoraguiardf.bobinabanking.ui.login.LoginActivity
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
 
@@ -56,7 +57,7 @@ class MainActivity : CustomActivity<ActivityMainBinding>() {
         }
         binding.actionSignUp.setOnClickListener {}
         binding.actionSignInContinue.setOnClickListener {
-            // launcher.launch(Intent(this, LoginActivity::class.java))
+             launcher.launch(Intent(this, HomeActivity::class.java))
         }
         binding.actionSignUp.visibility = View.GONE
         binding.actionSignInContinue.visibility = View.GONE

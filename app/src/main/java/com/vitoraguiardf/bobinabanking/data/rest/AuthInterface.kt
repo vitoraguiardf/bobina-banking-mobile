@@ -1,6 +1,7 @@
 package com.vitoraguiardf.bobinabanking.data.rest
 
 import com.vitoraguiardf.bobinabanking.data.entity.JsonWebToken
+import com.vitoraguiardf.bobinabanking.data.entity.Message
 import com.vitoraguiardf.bobinabanking.data.entity.User
 
 import retrofit2.Call
@@ -13,7 +14,9 @@ interface AuthInterface {
 
     @FormUrlEncoded
     @POST("auth/login")
-    fun login(@Field("email") username: String, @Field("password") password: String
+    fun login(
+        @Field("email") username: String,
+        @Field("password") password: String
     ): Call<JsonWebToken>
 
     @GET("auth/me")
@@ -23,6 +26,6 @@ interface AuthInterface {
     fun refresh(): Call<JsonWebToken>
 
     @GET("auth/logout")
-    fun logout(): Call<String>
+    fun logout(): Call<Message>
 
 }

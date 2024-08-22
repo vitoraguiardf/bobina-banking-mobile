@@ -51,7 +51,7 @@ class LoginActivity: CustomActivity<ActivityLoginBinding>() {
         })
         loginViewModel.form.result.observe(this@LoginActivity, Observer {
             val result = it?: return@Observer
-            Toast.makeText(this@LoginActivity, result, Toast.LENGTH_LONG).show()
+            Toast.makeText(this@LoginActivity, result, Toast.LENGTH_SHORT).show()
         })
         loginViewModel.form.throwable.observe(this@LoginActivity, Observer {
             val throwable = it?: return@Observer

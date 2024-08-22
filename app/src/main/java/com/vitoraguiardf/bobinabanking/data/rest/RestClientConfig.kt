@@ -3,6 +3,7 @@ package com.vitoraguiardf.bobinabanking.data.rest
 import android.content.Context
 import com.google.gson.GsonBuilder
 import com.vitoraguiardf.bobinabanking.R
+import com.vitoraguiardf.bobinabanking.Singleton
 import com.vitoraguiardf.bobinabanking.utils.enums.HttpStatus
 import okhttp3.ConnectionSpec
 import okhttp3.Interceptor
@@ -31,11 +32,10 @@ class RestClientConfig(context: Context) {
             val request = chain.request()
             val rBuilder = request.newBuilder()
             if (!request.url().toString().endsWith("login")) {
-                TODO("Add Token to Client")
-//              getCurrentToken?.let {
-//                  rBuilder.addHeader("Authorization", token.getAuthorization())
-//                  rBuilder.addHeader("Accept", "application/json")
-//              }
+                Singleton.instance.token?.let {
+                    rBuilder.addHeader("Authorization", it.getAuthorization())
+                    rBuilder.addHeader("Accept", "application/json")
+                }
             }
             val response = chain.proceed(rBuilder.build())
             val responseCode = response.code()

@@ -55,7 +55,6 @@ class LoginActivity: CustomActivity<ActivityLoginBinding>() {
         })
         loginViewModel.form.throwable.observe(this@LoginActivity, Observer {
             val throwable = it?: return@Observer
-            throwable.printStackTrace()
             Toast.makeText(this@LoginActivity, throwable.message, Toast.LENGTH_LONG).show()
         })
 

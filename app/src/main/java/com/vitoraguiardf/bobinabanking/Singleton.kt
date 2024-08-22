@@ -4,6 +4,7 @@ import android.app.Application
 import android.os.Handler
 import android.os.Looper
 import androidx.core.os.HandlerCompat
+import com.vitoraguiardf.bobinabanking.data.entity.JsonWebToken
 import com.vitoraguiardf.bobinabanking.data.rest.RestClientConfig
 import retrofit2.Retrofit
 import java.util.concurrent.ExecutorService
@@ -13,6 +14,7 @@ class Singleton: Application() {
     lateinit var executor: ExecutorService
     lateinit var handler: Handler
     lateinit var retrofit: Retrofit
+    var token: JsonWebToken? = null
 
     override fun onCreate() {
         super.onCreate()

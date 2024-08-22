@@ -5,6 +5,7 @@ import android.widget.EditText
 import androidx.annotation.StringRes
 import androidx.lifecycle.viewModelScope
 import com.vitoraguiardf.bobinabanking.R
+import com.vitoraguiardf.bobinabanking.Singleton
 import com.vitoraguiardf.bobinabanking.data.entity.JsonWebToken
 import com.vitoraguiardf.bobinabanking.data.rest.AuthRepository
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
@@ -22,10 +23,12 @@ class LoginViewModel: ViewModel<Int, String, LoginViewModel.LoginFormErrors>() {
         this@LoginViewModel.form.internalState.value = FormState.RUNNING
         viewModelScope.launch {
             start()
+            Singleton.instance.token = null
             withContext(Dispatchers.IO) {
                 val resultLogin: Result<JsonWebToken> = repository.login(username, password)
                 if (resultLogin.isSuccess)
                     resultLogin.getOrNull()?.let {
+                        Singleton.instance.token = it
                         success("Autenticação bem sucedida!")
                         return@withContext
                     }

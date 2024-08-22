@@ -15,11 +15,12 @@ class AuthRepository {
             try {
                 val response = endPoint.login(username, password).execute()
                 if (response.errorBody() != null) {
-                    Result.failure(Throwable(response.errorBody()!!.string()))
+                    Result.failure(Throwable("${response.code()}: ${response.errorBody()!!.string()}"))
                 } else {
                     val responseBody = response.body()
+                    System.out.println(responseBody)
                     var token: JsonWebToken? = null
-                    Result.success(responseBody?.data!!)
+                    Result.success(responseBody!!)
                 }
             } catch (ex: IOException) {
                 Result.failure(ex)
@@ -36,7 +37,7 @@ class AuthRepository {
                 } else {
                     val responseBody = response.body()
                     var user: User? = null
-                    Result.success(responseBody?.data!!)
+                    Result.success(responseBody!!)
                 }
             } catch (ex: IOException) {
                 Result.failure(ex)

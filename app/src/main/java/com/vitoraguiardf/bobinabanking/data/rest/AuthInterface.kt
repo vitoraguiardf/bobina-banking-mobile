@@ -14,15 +14,15 @@ interface AuthInterface {
     @FormUrlEncoded
     @POST("auth/login")
     fun login(@Field("email") username: String, @Field("password") password: String
-    ): Call<CustomResponse<JsonWebToken>>
+    ): Call<JsonWebToken>
 
     @GET("auth/me")
-    fun me(): Call<CustomResponse<User>>
+    fun me(): Call<User>
 
     @GET("auth/refresh")
-    fun refresh(): Call<CustomResponse<JsonWebToken>>
+    fun refresh(): Call<JsonWebToken>
 
     @GET("auth/logout")
-    fun logout(): Call<CustomResponse<String>>
+    fun logout(): Call<String>
 
 }

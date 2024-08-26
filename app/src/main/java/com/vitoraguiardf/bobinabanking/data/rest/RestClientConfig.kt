@@ -32,9 +32,9 @@ class RestClientConfig(context: Context) {
             val request = chain.request()
             val rBuilder = request.newBuilder()
             if (!request.url().toString().endsWith("login")) {
+                rBuilder.addHeader("Accept", "application/json")
                 Singleton.instance.token?.let {
                     rBuilder.addHeader("Authorization", it.getAuthorization())
-                    rBuilder.addHeader("Accept", "application/json")
                 }
             }
             val response = chain.proceed(rBuilder.build())

@@ -141,15 +141,23 @@
         <LinearLayout
             android:padding="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
                 android:text="@string/latest_records"
                 android:textSize="18sp"
+                android:paddingVertical="5dp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_lancamentos"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
 
         </LinearLayout>
 

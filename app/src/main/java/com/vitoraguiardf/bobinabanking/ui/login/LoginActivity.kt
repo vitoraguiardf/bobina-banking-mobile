@@ -10,8 +10,8 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.R
-import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
 import com.vitoraguiardf.bobinabanking.databinding.ActivityLoginBinding
+import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
 
 class LoginActivity: CustomActivity<ActivityLoginBinding>() {
@@ -48,10 +48,6 @@ class LoginActivity: CustomActivity<ActivityLoginBinding>() {
                     return@Observer
                 }
             }
-        })
-        loginViewModel.form.result.observe(this@LoginActivity, Observer {
-            val result = it?: return@Observer
-            Toast.makeText(this@LoginActivity, result, Toast.LENGTH_SHORT).show()
         })
         loginViewModel.form.throwable.observe(this@LoginActivity, Observer {
             val throwable = it?: return@Observer

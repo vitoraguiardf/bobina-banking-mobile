@@ -1,6 +1,7 @@
 package com.vitoraguiardf.bobinabanking.ui.main
 
 import androidx.lifecycle.viewModelScope
+import com.vitoraguiardf.bobinabanking.Singleton
 import com.vitoraguiardf.bobinabanking.data.entity.User
 import com.vitoraguiardf.bobinabanking.data.rest.AuthRepository
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.ViewModel
@@ -17,6 +18,7 @@ class MainViewModel: ViewModel<Int, User, Void>() {
                 val result: Result<User> = repository.me()
                 if (result.isSuccess)
                     result.getOrNull()?.let {
+                        Singleton.instance.user = it
                         success(it)
                         return@withContext
                     }

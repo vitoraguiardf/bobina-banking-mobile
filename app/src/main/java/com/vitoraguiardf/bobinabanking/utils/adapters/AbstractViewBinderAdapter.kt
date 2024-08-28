@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class AbstractViewBinderAdapter<Type, ViewBinder: androidx.viewbinding.ViewBinding>(
     val context: Context,
-    private val items: MutableList<Type>,
+    private val items: Array<Type>,
 ):
     RecyclerView.Adapter<AbstractViewBinderAdapter.ViewBinderHolder<Type, ViewBinder>>() {
 

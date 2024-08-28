@@ -32,21 +32,25 @@ class LoginActivity: CustomActivity<ActivityLoginBinding>() {
         })
         loginViewModel.form.state.observe(this@LoginActivity, Observer {
             val state = it?: return@Observer
-            when(state) {
-                FormState.SUCCESS -> {
-                    setLoadingState(false)
-                    setResult(Activity.RESULT_OK)
-                    finish()
-                    return@Observer
-                }
-                FormState.FAILED -> {
-                    setLoadingState(false)
-                    return@Observer
-                }
-                FormState.RUNNING -> {
-                    setLoadingState(true)
-                    return@Observer
-                }
+            binding.username.isEnabled = when(state) {
+                FormState.FAILED -> true
+                else -> false
+            }
+            binding.password.isEnabled = when(state) {
+                FormState.FAILED -> true
+                else -> false
+            }
+            binding.password.isEnabled = when(state) {
+                FormState.FAILED -> true
+                else -> false
+            }
+            binding.included!!.loading.visibility = when(state) {
+                FormState.RUNNING -> View.VISIBLE
+                else -> View.GONE
+            }
+            if(FormState.SUCCESS == state) {
+                setResult(Activity.RESULT_OK)
+                finish()
             }
         })
         loginViewModel.form.throwable.observe(this@LoginActivity, Observer {
@@ -80,13 +84,6 @@ class LoginActivity: CustomActivity<ActivityLoginBinding>() {
 
         binding.login.setOnClickListener { requestLogin() }
 
-    }
-
-    private fun setLoadingState(loading: Boolean) {
-        binding.username.isEnabled = !loading
-        binding.password.isEnabled = !loading
-        binding.login.isEnabled = !loading
-        binding.loading.visibility = if (!loading) View.GONE else View.VISIBLE
     }
 
     private fun requestLogin() {

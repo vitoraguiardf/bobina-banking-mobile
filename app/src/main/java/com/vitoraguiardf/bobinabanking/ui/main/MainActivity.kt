@@ -42,7 +42,7 @@ class MainActivity : CustomActivity<ActivityMainBinding>() {
                 else -> View.GONE
             }
 
-            binding.includedProgress.loading.visibility = when(state) {
+            binding.included.loading.visibility = when(state) {
                 FormState.RUNNING -> View.VISIBLE
                 else -> View.GONE
             }

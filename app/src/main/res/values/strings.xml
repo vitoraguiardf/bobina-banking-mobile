@@ -57,4 +57,5 @@
     <string name="action_register_send">Send</string>
     <string name="action_register_receive">Receive</string>
     <string name="error_operation_has_failed">The operation has an unexpected fail</string>
+    <string name="unities">unities</string>
 </resources>

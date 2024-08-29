@@ -7,6 +7,7 @@ import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.data.entity.Transaction
 import com.vitoraguiardf.bobinabanking.databinding.LayoutTransactionItemBinding
 import com.vitoraguiardf.bobinabanking.utils.adapters.AbstractViewBinderAdapter
+import java.util.Locale
 
 class TransactionAdapter(context: Context, items: Array<Transaction>):
     AbstractViewBinderAdapter<Transaction, LayoutTransactionItemBinding>(context, items) {
@@ -17,9 +18,13 @@ class TransactionAdapter(context: Context, items: Array<Transaction>):
         return object: ViewBinderHolder<Transaction, LayoutTransactionItemBinding>(binder) {
             override fun bind(item: Transaction) {
                 binder.imageView.setImageDrawable(context.getDrawable(R.drawable.ic_up))
+
                 binder.textViewType.text = "${item.transactionTypeId}"
                 binder.textViewName.text = "De: ${item.fromStorageId} Para: ${item.toStorageId}"
-                binder.textViewValue.text = "${item.quantity}"
+                binder.textViewValue.text = String.format(Locale.getDefault(),
+                    "%,2d %s",
+                    item.quantity, context.getString(R.string.unities)
+                )
                 binder.textViewTime.text = "${item.createdAt}"
             }
         }

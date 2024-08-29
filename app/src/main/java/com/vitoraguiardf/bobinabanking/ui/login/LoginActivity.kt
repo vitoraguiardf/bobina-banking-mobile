@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.databinding.ActivityLoginBinding
+import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
 import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
 
@@ -23,7 +24,9 @@ class LoginActivity: CustomActivity<ActivityLoginBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+        loginViewModel = ViewModelProvider(
+            this, ViewModelFactory(this)
+        )[LoginViewModel::class.java]
         loginViewModel.form.validationError.observe(this@LoginActivity, Observer {
             val validator = it?: return@Observer
             binding.login.isEnabled = validator.noHasError()

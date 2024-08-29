@@ -1,5 +1,6 @@
 package com.vitoraguiardf.bobinabanking.ui.login
 
+import android.content.Context
 import android.util.Patterns
 import android.widget.EditText
 import androidx.annotation.StringRes
@@ -14,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class LoginViewModel: ViewModel<Int, String, LoginViewModel.LoginFormErrors>() {
+class LoginViewModel(val context: Context): ViewModel<Int, String, LoginViewModel.LoginFormErrors>() {
 
     fun login(username: EditText, password: EditText, remember: Boolean) {
         this@LoginViewModel.login(username.text.toString(), password.text.toString(), remember)

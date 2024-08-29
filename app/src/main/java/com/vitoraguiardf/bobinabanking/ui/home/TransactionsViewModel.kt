@@ -2,6 +2,7 @@ package com.vitoraguiardf.bobinabanking.ui.home
 
 import android.content.Context
 import androidx.lifecycle.viewModelScope
+import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.data.entity.Transaction
 import com.vitoraguiardf.bobinabanking.data.rest.TransactionRepository
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.ViewModel
@@ -27,7 +28,7 @@ class TransactionsViewModel(val context: Context): ViewModel<Int, Array<Transact
                         return@withContext
                     }
                 }
-                failure(RuntimeException())
+                failure(RuntimeException(context.getString(R.string.error_operation_has_failed)))
             }
         }
     }

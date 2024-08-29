@@ -28,7 +28,7 @@ class UserResumeViewModel(val context: Context): ViewModel<Int, User, Void>() {
                         return@withContext
                     }
                 }
-                failure(RuntimeException())
+                failure(RuntimeException(context.getString(R.string.error_operation_has_failed)))
             }
         }
     }

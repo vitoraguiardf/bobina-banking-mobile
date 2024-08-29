@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.databinding.ActivityMainBinding
+import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
 import com.vitoraguiardf.bobinabanking.ui.home.HomeActivity
 import com.vitoraguiardf.bobinabanking.ui.login.LoginActivity
 import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
@@ -23,7 +24,9 @@ class MainActivity : CustomActivity<ActivityMainBinding>() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel = ViewModelProvider(
+            this, ViewModelFactory(this)
+        )[MainViewModel::class.java]
         viewModel.form.state.observe(this@MainActivity, Observer {
             val state = it?: return@Observer
 

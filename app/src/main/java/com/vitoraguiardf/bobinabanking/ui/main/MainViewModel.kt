@@ -1,6 +1,8 @@
 package com.vitoraguiardf.bobinabanking.ui.main
 
+import android.content.Context
 import androidx.lifecycle.viewModelScope
+import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.Singleton
 import com.vitoraguiardf.bobinabanking.data.entity.User
 import com.vitoraguiardf.bobinabanking.data.rest.AuthRepository
@@ -9,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainViewModel: ViewModel<Int, User, Void>() {
+class MainViewModel(val context: Context): ViewModel<Int, User, Void>() {
 
     fun me() {
         viewModelScope.launch {
@@ -28,7 +30,7 @@ class MainViewModel: ViewModel<Int, User, Void>() {
                         return@withContext
                     }
                 }
-                failure(RuntimeException("A autenticação falhou de forma inesperada!"))
+                failure(RuntimeException(context.getString(R.string.error_operation_has_failed)))
             }
         }
     }

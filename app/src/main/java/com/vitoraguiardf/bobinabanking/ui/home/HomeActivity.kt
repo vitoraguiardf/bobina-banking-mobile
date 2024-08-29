@@ -25,6 +25,24 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val viewModelProvider = ViewModelProvider(this, ViewModelFactory(this))
+
+        val viewModel = viewModelProvider[HomeViewModel::class.java]
+        viewModel.form.state.observe(this, Observer {
+            val state = it?: return@Observer
+            binding.included.loading.visibility = when(state) {
+                FormState.RUNNING -> View.VISIBLE
+                else -> View.GONE
+            }
+        })
+        viewModel.form.throwable.observe(this, Observer {
+            val throwable = it?: return@Observer
+            Toast.makeText(this, throwable.message, Toast.LENGTH_LONG).show()
+        })
+        viewModel.form.result.observe(this, Observer {
+            val result = it?: return@Observer
+            Toast.makeText(this, result, Toast.LENGTH_LONG).show()
+        })
+
         vmTransactions = viewModelProvider[TransactionsViewModel::class.java]
         vmTransactions.form.state.observe(this, Observer {
             val state = it?: return@Observer
@@ -76,6 +94,7 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
 
         vmUserResume.resume()
         vmTransactions.transactions()
+        viewModel.transactionTypes()
     }
 
 }

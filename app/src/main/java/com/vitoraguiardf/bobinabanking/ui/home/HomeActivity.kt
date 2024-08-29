@@ -12,7 +12,7 @@ import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
 
 class HomeActivity : CustomActivity<ActivityHomeBinding>() {
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var viewModel: TransactionsViewModel
 
     override fun viewBindingInflate(): ActivityHomeBinding {
         return ActivityHomeBinding.inflate(layoutInflater)
@@ -20,7 +20,7 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        viewModel = ViewModelProvider(this)[TransactionsViewModel::class.java]
         viewModel.form.state.observe(this, Observer {
             val state = it?: return@Observer
             binding.included.loading.visibility = when(state) {
@@ -43,7 +43,8 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
         })
 
         binding.textViewUserName.text = Singleton.instance.user.name
-        binding.textViewSaldo.text = "75 bobinas"
+        val saldo = (Singleton.instance.user.sumOfToTransactions?: 0) - (Singleton.instance.user.sumOfToTransactions?: 0)
+        binding.textViewSaldo.text = "$saldo bobinas"
 
         viewModel.transactions()
     }

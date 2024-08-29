@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeViewModel: ViewModel<Int, Array<Transaction>, Void>() {
+class TransactionsViewModel(): ViewModel<Int, Array<Transaction>, Void>() {
 
     fun transactions() {
         viewModelScope.launch {
@@ -26,7 +26,7 @@ class HomeViewModel: ViewModel<Int, Array<Transaction>, Void>() {
                         return@withContext
                     }
                 }
-                failure(RuntimeException("A autenticação falhou de forma inesperada!"))
+                failure(RuntimeException())
             }
         }
     }

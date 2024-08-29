@@ -6,14 +6,13 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class User(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int?,
+    @PrimaryKey(autoGenerate = false)
+    val id: Int,
     val name: String,
-    @SerializedName("short_name")
-    val shortName: String? = null,
-    val email: String? = null,
-    @SerializedName("employee_id")
-    val employeeId: Long? = null,
-    @SerializedName("last_name")
-    val lastName: String? = null,
+    val email: String,
+    val profileImage: String,
+    @SerializedName("from_transactions_sum_quantity")
+    val sumOfFromTransactions: Int?,
+    @SerializedName("to_transactions_sum_quantity")
+    val sumOfToTransactions: Int?,
 )

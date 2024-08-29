@@ -1,5 +1,6 @@
 package com.vitoraguiardf.bobinabanking.ui.home
 
+import android.content.Context
 import androidx.lifecycle.viewModelScope
 import com.vitoraguiardf.bobinabanking.data.entity.Transaction
 import com.vitoraguiardf.bobinabanking.data.rest.TransactionRepository
@@ -8,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class TransactionsViewModel(): ViewModel<Int, Array<Transaction>, Void>() {
+class TransactionsViewModel(val context: Context): ViewModel<Int, Array<Transaction>, Void>() {
 
     fun transactions() {
         viewModelScope.launch {

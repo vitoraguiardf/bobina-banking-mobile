@@ -28,8 +28,10 @@ class LoginViewModel(val context: Context): ViewModel<Int, String, LoginViewMode
             withContext(Dispatchers.IO) {
                 val resultLogin: Result<JsonWebToken> = repository.login(username, password)
                 if (resultLogin.isSuccess)
-                    resultLogin.getOrNull()?.let {
-                        Singleton.instance.token = it
+                    resultLogin.getOrNull()?.let { token ->
+                        Singleton.instance.runDatabase { database ->
+                            database.jsonWebTokenDao().insert(token)
+                        }
                         success("Autenticação bem sucedida!")
                         return@withContext
                     }
@@ -39,7 +41,7 @@ class LoginViewModel(val context: Context): ViewModel<Int, String, LoginViewMode
                         return@withContext
                     }
                 }
-                failure(RuntimeException("A autenticação falhou de forma inesperada!"))
+                failure(RuntimeException(context.getString(R.string.error_operation_has_failed)))
             }
         }
     }

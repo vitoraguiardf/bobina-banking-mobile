@@ -3,6 +3,7 @@ package com.vitoraguiardf.bobinabanking.ui.home
 import android.content.Context
 import androidx.lifecycle.viewModelScope
 import com.vitoraguiardf.bobinabanking.R
+import com.vitoraguiardf.bobinabanking.Singleton
 import com.vitoraguiardf.bobinabanking.data.entity.TransactionType
 import com.vitoraguiardf.bobinabanking.data.rest.TransactionTypeRepository
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.ViewModel
@@ -18,9 +19,13 @@ class HomeViewModel(val context: Context): ViewModel<Int, String, Void>() {
             withContext(Dispatchers.IO) {
                 val result: Result<Array<TransactionType>> = repository.get()
                 if (result.isSuccess)
-                    result.getOrNull()?.let {
-                        success("Loaded ${it.count()} types!")
-                        TODO("persistence")
+                    result.getOrNull()?.let { items ->
+                        Singleton.instance.runDatabase { database ->
+                            for (item in items){
+                                database.transactionTypeDao().save(item)
+                            }
+                        }
+                        success("Loaded ${items.count()} types!")
                         return@withContext
                     }
                 else if (result.isFailure) {

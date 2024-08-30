@@ -6,14 +6,17 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.vitoraguiardf.bobinabanking.data.entity.JsonWebToken
 import com.vitoraguiardf.bobinabanking.data.entity.Session
+import com.vitoraguiardf.bobinabanking.data.entity.TransactionType
 import com.vitoraguiardf.bobinabanking.data.entity.User
 import com.vitoraguiardf.bobinabanking.data.repository.JsonWebTokenDao
+import com.vitoraguiardf.bobinabanking.data.repository.TransactionTypeDao
 import com.vitoraguiardf.bobinabanking.data.repository.UserDao
 
 @Database(
     entities = [
         User::class,
         JsonWebToken::class,
+        TransactionType::class,
         Session::class,
     ],
     version = 1,
@@ -21,6 +24,7 @@ import com.vitoraguiardf.bobinabanking.data.repository.UserDao
 )
 abstract class AppDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun transactionTypeDao(): TransactionTypeDao
     abstract fun jsonWebTokenDao(): JsonWebTokenDao
 
     companion object{

@@ -31,6 +31,13 @@ open class ViewModel<Progress, Result, FormValidator>(
         }
     }
 
+    protected suspend fun failure () {
+        log("FAILED")
+        dispatchMain {
+            this@ViewModel.form.internalState.value = FormState.FAILED
+        }
+    }
+
     protected suspend fun log (vararg messages: String) {
         dispatchMain {
             for (message in messages) {

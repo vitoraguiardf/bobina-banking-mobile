@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.viewModelScope
 import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.Singleton
+import com.vitoraguiardf.bobinabanking.data.entity.JsonWebToken
 import com.vitoraguiardf.bobinabanking.data.entity.User
 import com.vitoraguiardf.bobinabanking.data.rest.AuthRepository
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.ViewModel
@@ -35,6 +36,23 @@ class MainViewModel(val context: Context): ViewModel<Int, User, Void>() {
         }
     }
 
+    fun verifySession() {
+        viewModelScope.launch {
+            start()
+            withContext(Dispatchers.IO) {
+                var token: JsonWebToken? = null
+                Singleton.instance.runDatabase { database ->
+                    token = database.jsonWebTokenDao().findLast()
+                }
+                if (token != null) {
+                    Singleton.instance.token = token
+                    me()
+                } else {
+                    failure()
+                }
+            }
+        }
+    }
 
     companion object {
         internal val repository: AuthRepository = AuthRepository()

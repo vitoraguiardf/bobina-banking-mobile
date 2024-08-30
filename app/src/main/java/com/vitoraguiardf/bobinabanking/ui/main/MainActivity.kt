@@ -68,18 +68,12 @@ class MainActivity : CustomActivity<ActivityMainBinding>() {
         }
         binding.actionSignUp.visibility = View.GONE
         binding.actionSignInContinue.visibility = View.GONE
-        verifySession()
+        viewModel.verifySession()
     }
 
     override fun onPostResume() {
         super.onPostResume()
-        verifySession()
-    }
-
-    private fun verifySession() {
-        if (instance.token != null) {
-            viewModel.me()
-        }
+        viewModel.verifySession()
     }
 
 }

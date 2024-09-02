@@ -12,15 +12,15 @@ interface CoilTransactionDao: DaoRepository<CoilTransaction, Int> {
     fun deleteAll()
 
     @Transaction
-    @Query("SELECT * FROM CoilTransaction")
+    @Query("SELECT * FROM CoilTransaction ORDER BY ID DESC")
     fun findAll(): List<CoilTransaction>
 
     @Transaction
-    @Query("SELECT * FROM CoilTransaction")
+    @Query("SELECT * FROM CoilTransaction ORDER BY ID DESC")
     fun findAllFull(): List<CoilTransactionFull>
 
     @Query("SELECT * FROM CoilTransaction ORDER BY ID DESC LIMIT 1")
     fun findLast(): CoilTransaction?
-    @Query("SELECT * FROM CoilTransaction WHERE id IN (:ids)")
+    @Query("SELECT * FROM CoilTransaction WHERE id IN (:ids) ORDER BY ID DESC")
     fun findAllById(ids: IntArray): List<CoilTransaction>
 }

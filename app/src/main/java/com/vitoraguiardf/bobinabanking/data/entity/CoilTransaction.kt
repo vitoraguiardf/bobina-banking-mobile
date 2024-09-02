@@ -5,10 +5,10 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity
-data class Transaction(
+data class CoilTransaction(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
-    val description: String,
+    val description: String?,
     @SerializedName("created_at")
     val createdAt: String,
     @SerializedName("updated_at")
@@ -22,4 +22,6 @@ data class Transaction(
     @SerializedName("to_storage_id")
     val toStorageId: Int? = null,
     val quantity: Int,
-)
+) {
+
+}

@@ -40,7 +40,7 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
         })
         viewModel.form.result.observe(this, Observer {
             val result = it?: return@Observer
-            Toast.makeText(this, result, Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, result, Toast.LENGTH_LONG).show()
         })
 
         vmTransactions = viewModelProvider[TransactionsViewModel::class.java]
@@ -61,7 +61,7 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
         })
         vmTransactions.form.result.observe(this, Observer {
             val transactions = it?: return@Observer
-            val adapter = TransactionAdapter(this, transactions)
+            val adapter = TransactionAdapter(this, transactions.toTypedArray())
             binding.recyclerViewLancamentos.adapter = adapter
         })
 

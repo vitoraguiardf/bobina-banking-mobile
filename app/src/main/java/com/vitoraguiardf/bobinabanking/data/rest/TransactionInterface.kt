@@ -1,6 +1,6 @@
 package com.vitoraguiardf.bobinabanking.data.rest
 
-import com.vitoraguiardf.bobinabanking.data.entity.Transaction
+import com.vitoraguiardf.bobinabanking.data.entity.CoilTransaction
 import com.vitoraguiardf.bobinabanking.data.entity.User
 import retrofit2.Call
 import retrofit2.http.GET
@@ -11,6 +11,6 @@ interface TransactionInterface {
     fun resume(): Call<User>
 
     @GET("bobina-banking/transactions")
-    fun transactions(): Call<Array<Transaction>>
+    fun transactions(): Call<Array<CoilTransaction>>
 
 }

@@ -7,6 +7,7 @@ import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.data.entity.Transaction
 import com.vitoraguiardf.bobinabanking.databinding.LayoutTransactionItemBinding
 import com.vitoraguiardf.bobinabanking.utils.adapters.AbstractViewBinderAdapter
+import com.vitoraguiardf.bobinabanking.utils.datetime.TimeUtils
 import java.util.Locale
 
 class TransactionAdapter(context: Context, items: Array<Transaction>):
@@ -25,7 +26,7 @@ class TransactionAdapter(context: Context, items: Array<Transaction>):
                     "%,2d %s",
                     item.quantity, context.getString(R.string.unities)
                 )
-                binder.textViewTime.text = "${item.createdAt}"
+                binder.textViewTime.text = TimeUtils.from.laravel(item.createdAt).toHours()
             }
         }
     }

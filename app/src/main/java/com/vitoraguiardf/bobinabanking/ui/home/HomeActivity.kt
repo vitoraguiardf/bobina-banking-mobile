@@ -15,7 +15,7 @@ import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
 import java.util.Locale
 
 class HomeActivity : CustomActivity<ActivityHomeBinding>() {
-    private lateinit var vmTransactions: TransactionsViewModel
+    private lateinit var viewModel: HomeViewModel
     private lateinit var vmUserResume: UserResumeViewModel
 
     override fun viewBindingInflate(): ActivityHomeBinding {
@@ -26,12 +26,16 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
         super.onCreate(savedInstanceState)
         val viewModelProvider = ViewModelProvider(this, ViewModelFactory(this))
 
-        val viewModel = viewModelProvider[HomeViewModel::class.java]
+        viewModel = viewModelProvider[HomeViewModel::class.java]
         viewModel.form.state.observe(this, Observer {
             val state = it?: return@Observer
             binding.included.loading.visibility = when(state) {
                 FormState.RUNNING -> View.VISIBLE
                 else -> View.GONE
+            }
+            binding.recyclerViewLancamentos.visibility = when(state) {
+                FormState.RUNNING -> View.GONE
+                else -> View.VISIBLE
             }
         })
         viewModel.form.throwable.observe(this, Observer {
@@ -40,28 +44,7 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
         })
         viewModel.form.result.observe(this, Observer {
             val result = it?: return@Observer
-//            Toast.makeText(this, result, Toast.LENGTH_LONG).show()
-        })
-
-        vmTransactions = viewModelProvider[TransactionsViewModel::class.java]
-        vmTransactions.form.state.observe(this, Observer {
-            val state = it?: return@Observer
-            binding.included.loading.visibility = when(state) {
-                FormState.RUNNING -> View.VISIBLE
-                else -> View.GONE
-            }
-            binding.recyclerViewLancamentos.visibility = when(state) {
-                FormState.SUCCESS -> View.VISIBLE
-                else -> View.GONE
-            }
-        })
-        vmTransactions.form.throwable.observe(this, Observer {
-            val throwable = it?: return@Observer
-            Toast.makeText(this, throwable.message, Toast.LENGTH_LONG).show()
-        })
-        vmTransactions.form.result.observe(this, Observer {
-            val transactions = it?: return@Observer
-            val adapter = TransactionAdapter(this, transactions.toTypedArray())
+            val adapter = TransactionAdapter(this, result.toTypedArray())
             binding.recyclerViewLancamentos.adapter = adapter
         })
 
@@ -93,8 +76,11 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
         binding.textViewUserName.text = Singleton.instance.user.name
 
         vmUserResume.resume()
-        vmTransactions.transactions()
-        viewModel.transactionTypes()
+        viewModel.getData()
     }
 
+    override fun onPostResume() {
+        super.onPostResume()
+        viewModel.getData()
+    }
 }

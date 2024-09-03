@@ -1,5 +1,6 @@
 package com.vitoraguiardf.bobinabanking.ui.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -17,13 +18,18 @@ class TransactionAdapter(context: Context, items: Array<CoilTransactionFull>):
         val binder = LayoutTransactionItemBinding.inflate(
             LayoutInflater.from(parent!!.context), parent, false)
         return object: ViewBinderHolder<CoilTransactionFull, LayoutTransactionItemBinding>(binder) {
+            @SuppressLint("SetTextI18n")
             override fun bind(item: CoilTransactionFull) {
                 binder.imageView.setImageDrawable(context.getDrawable(R.drawable.ic_up))
 
                 binder.textViewType.text = item.transactionType.name
-                binder.textViewName.text = String.format("De: %s Para: %s",
-                    item.coilTransaction.fromStorageId,
-                    item.coilTransaction.toStorageId)
+                val from = item.fromAccount?.let {
+                    String.format("De: %s", it.name)
+                }
+                val to = item.toAccount?.let {
+                    String.format("Para: %s", it.name)
+                }
+                binder.textViewName.text = "${from?:""}\n${to?:""}".trim()
                 binder.textViewValue.text = String.format(Locale.getDefault(),
                     "%,2d %s",
                     item.coilTransaction.quantity, context.getString(R.string.unities)

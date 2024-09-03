@@ -4,11 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.vitoraguiardf.bobinabanking.data.entity.Account
 import com.vitoraguiardf.bobinabanking.data.entity.CoilTransaction
 import com.vitoraguiardf.bobinabanking.data.entity.JsonWebToken
 import com.vitoraguiardf.bobinabanking.data.entity.Session
 import com.vitoraguiardf.bobinabanking.data.entity.TransactionType
 import com.vitoraguiardf.bobinabanking.data.entity.User
+import com.vitoraguiardf.bobinabanking.data.repository.AccountDao
 import com.vitoraguiardf.bobinabanking.data.repository.CoilTransactionDao
 import com.vitoraguiardf.bobinabanking.data.repository.JsonWebTokenDao
 import com.vitoraguiardf.bobinabanking.data.repository.TransactionTypeDao
@@ -17,6 +19,7 @@ import com.vitoraguiardf.bobinabanking.data.repository.UserDao
 @Database(
     entities = [
         User::class,
+        Account::class,
         JsonWebToken::class,
         CoilTransaction::class,
         TransactionType::class,
@@ -27,6 +30,7 @@ import com.vitoraguiardf.bobinabanking.data.repository.UserDao
 )
 abstract class AppDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun accountDao(): AccountDao
     abstract fun coilTransactionDao(): CoilTransactionDao
     abstract fun transactionTypeDao(): TransactionTypeDao
     abstract fun jsonWebTokenDao(): JsonWebTokenDao

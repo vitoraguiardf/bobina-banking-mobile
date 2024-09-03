@@ -10,5 +10,15 @@ data class CoilTransactionFull(
         parentColumn = "transactionTypeId",
         entityColumn = "id",
     )
-    val transactionType: TransactionType
+    val transactionType: TransactionType,
+    @Relation(
+        parentColumn = "fromStorageId",
+        entityColumn = "id",
+    )
+    val fromAccount: Account?,
+    @Relation(
+        parentColumn = "toStorageId",
+        entityColumn = "id",
+    )
+    val toAccount: Account?,
 )

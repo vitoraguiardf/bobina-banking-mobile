@@ -94,35 +94,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_enviar"
+                <ImageButton
+                    android:id="@+id/button_use"
+                    android:src="@drawable/ic_print"
+                    android:text="@string/action_register_usage"
+                    android:padding="15dp"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <ImageButton
+                    android:id="@+id/button_send"
+                    android:src="@drawable/ic_send"
                     android:text="@string/action_register_send"
                     android:padding="15dp"
                     android:textSize="20sp"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_receber"
-                    android:text="@string/action_register_receive"
-                    android:padding="15dp"
-                    android:textSize="20sp"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="match_parent"/>
 
             </LinearLayout>
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_registrar_uso"
-                android:text="@string/action_register_usage"
-                android:padding="15dp"
-                android:textSize="20sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
 
         </LinearLayout>
 

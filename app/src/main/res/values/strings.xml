@@ -58,4 +58,6 @@
     <string name="action_register_receive">Receive</string>
     <string name="error_operation_has_failed">The operation has an unexpected fail</string>
     <string name="unities">unities</string>
+    <string name="hints_receiver_key">Insira a chave de quem vai receber…</string>
+    <string name="search">search</string>
 </resources>

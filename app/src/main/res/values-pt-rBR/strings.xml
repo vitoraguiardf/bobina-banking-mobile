@@ -52,4 +52,6 @@
     <string name="action_register_receive">Receber</string>
     <string name="error_operation_has_failed">A operação de rede falhou de forma inesperada</string>
     <string name="unities">unidades</string>
+    <string name="hints_receiver_key">Insira a chave de quem vai receber…</string>
+    <string name="search">buscar</string>
 </resources>

@@ -13,6 +13,7 @@ import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
 import com.vitoraguiardf.bobinabanking.ui.adapters.TransactionAdapter
 import com.vitoraguiardf.bobinabanking.ui.transaction.CoilTransactionActivity
 import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
+import com.vitoraguiardf.bobinabanking.utils.enums.TransactionType
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
 import java.util.Locale
 
@@ -77,7 +78,14 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
 
         binding.textViewUserName.text = Singleton.instance.user.name
         binding.buttonSend.setOnClickListener { _ ->
-            launcher.launch(Intent(this, CoilTransactionActivity::class.java))
+            val intent = Intent(this, CoilTransactionActivity::class.java)
+            intent.putExtra("TRANSACTION_TYPE", TransactionType.TRANSFERENCE)
+            launcher.launch(intent)
+        }
+        binding.buttonUse.setOnClickListener { _ ->
+            val intent = Intent(this, CoilTransactionActivity::class.java)
+            intent.putExtra("TRANSACTION_TYPE", TransactionType.USAGE)
+            launcher.launch(intent)
         }
 
         vmUserResume.resume()

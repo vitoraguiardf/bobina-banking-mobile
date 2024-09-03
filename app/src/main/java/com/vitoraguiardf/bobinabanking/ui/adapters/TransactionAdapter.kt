@@ -18,7 +18,7 @@ class TransactionAdapter(context: Context, items: Array<CoilTransactionFull>):
         val binder = LayoutTransactionItemBinding.inflate(
             LayoutInflater.from(parent!!.context), parent, false)
         return object: ViewBinderHolder<CoilTransactionFull, LayoutTransactionItemBinding>(binder) {
-            @SuppressLint("SetTextI18n")
+            @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
             override fun bind(item: CoilTransactionFull) {
                 binder.imageView.setImageDrawable(context.getDrawable(R.drawable.ic_up))
 

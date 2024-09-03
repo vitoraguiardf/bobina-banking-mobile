@@ -24,7 +24,7 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModelProvider = ViewModelProvider(this, ViewModelFactory(this))
+        val viewModelProvider = ViewModelProvider(this, ViewModelFactory(resources))
 
         viewModel = viewModelProvider[HomeViewModel::class.java]
         viewModel.form.state.observe(this, Observer {

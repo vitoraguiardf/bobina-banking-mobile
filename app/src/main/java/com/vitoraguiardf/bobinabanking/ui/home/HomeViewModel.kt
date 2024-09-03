@@ -1,6 +1,5 @@
 package com.vitoraguiardf.bobinabanking.ui.home
 
-import android.content.Context
 import android.content.res.Resources
 import androidx.lifecycle.viewModelScope
 import com.vitoraguiardf.bobinabanking.R
@@ -75,7 +74,7 @@ class HomeViewModel(private val resources: Resources): ViewModel<Int, List<CoilT
                 return
             }
         }
-        failure(RuntimeException(res.getString(R.string.error_operation_has_failed)))
+        failure(RuntimeException(resources.getString(R.string.error_operation_has_failed)))
     }
 
     private suspend fun getTransactions() {
@@ -99,7 +98,7 @@ class HomeViewModel(private val resources: Resources): ViewModel<Int, List<CoilT
                     return
                 }
             }
-            failure(RuntimeException(context.getString(R.string.error_operation_has_failed)))
+            failure(RuntimeException(resources.getString(R.string.error_operation_has_failed)))
     }
 
     companion object {

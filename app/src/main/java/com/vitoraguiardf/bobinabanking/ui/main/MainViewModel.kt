@@ -1,6 +1,6 @@
 package com.vitoraguiardf.bobinabanking.ui.main
 
-import android.content.Context
+import android.content.res.Resources
 import androidx.lifecycle.viewModelScope
 import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.Singleton
@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainViewModel(val context: Context): ViewModel<Int, User, Void>() {
+class MainViewModel(private val resources: Resources): ViewModel<Int, User, Void>() {
 
     fun me() {
         viewModelScope.launch {
@@ -31,7 +31,7 @@ class MainViewModel(val context: Context): ViewModel<Int, User, Void>() {
                         return@withContext
                     }
                 }
-                failure(RuntimeException(context.getString(R.string.error_operation_has_failed)))
+                failure(RuntimeException(resources.getString(R.string.error_operation_has_failed)))
             }
         }
     }

@@ -24,8 +24,7 @@ class LoginActivity: CustomActivity<ActivityLoginBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loginViewModel = ViewModelProvider(
-            this, ViewModelFactory(this)
+        loginViewModel = ViewModelProvider(this, ViewModelFactory(resources)
         )[LoginViewModel::class.java]
         loginViewModel.form.validationError.observe(this@LoginActivity, Observer {
             val validator = it?: return@Observer

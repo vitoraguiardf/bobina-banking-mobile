@@ -24,8 +24,7 @@ class MainActivity : CustomActivity<ActivityMainBinding>() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this, ViewModelFactory(this)
+        viewModel = ViewModelProvider(this, ViewModelFactory(resources)
         )[MainViewModel::class.java]
         viewModel.form.state.observe(this@MainActivity, Observer {
             val state = it?: return@Observer

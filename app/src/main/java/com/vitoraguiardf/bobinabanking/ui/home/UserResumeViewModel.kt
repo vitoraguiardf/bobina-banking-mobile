@@ -1,6 +1,6 @@
 package com.vitoraguiardf.bobinabanking.ui.home
 
-import android.content.Context
+import android.content.res.Resources
 import androidx.lifecycle.viewModelScope
 import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.data.entity.User
@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class UserResumeViewModel(val context: Context): ViewModel<Int, User, Void>() {
+class UserResumeViewModel(private val resources: Resources): ViewModel<Int, User, Void>() {
 
     fun resume() {
         viewModelScope.launch {
@@ -28,7 +28,7 @@ class UserResumeViewModel(val context: Context): ViewModel<Int, User, Void>() {
                         return@withContext
                     }
                 }
-                failure(RuntimeException(context.getString(R.string.error_operation_has_failed)))
+                failure(RuntimeException(resources.getString(R.string.error_operation_has_failed)))
             }
         }
     }

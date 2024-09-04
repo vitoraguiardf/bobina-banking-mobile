@@ -1,5 +1,7 @@
 package com.vitoraguiardf.bobinabanking.utils.enums
 
-enum class TransactionType {
+import java.io.Serializable
+
+enum class TransactionType: Serializable {
     USAGE, TRANSFERENCE
 }

@@ -84,6 +84,7 @@ dependencies {
     // Android Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.legacy.support.v4)
     annotationProcessor(libs.androidx.room.compiler)
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.androidx.room.compiler)

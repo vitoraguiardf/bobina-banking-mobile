@@ -54,4 +54,13 @@
     <string name="unities">unidades</string>
     <string name="hints_receiver_key">Insira a chave de quem vai receber…</string>
     <string name="search">buscar</string>
+    <string name="quantity">Quantidade</string>
+    <string name="confirm">Confirmar</string>
+    <string name="optional_description">Descrição (opcional)</string>
+    <string name="confirmation">Confirmação</string>
+    <string name="recipient">Destinitário</string>
+    <string name="sender">Origem</string>
+    <string name="sender_account">Conta de Origem</string>
+    <string name="recipient_account">Conta Destino</string>
+    <string name="transference_to">Transferência para</string>
 </resources>

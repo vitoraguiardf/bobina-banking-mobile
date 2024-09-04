@@ -60,4 +60,13 @@
     <string name="unities">unities</string>
     <string name="hints_receiver_key">Insira a chave de quem vai receber…</string>
     <string name="search">search</string>
+    <string name="quantity">quantity</string>
+    <string name="confirm">Confirm</string>
+    <string name="optional_description">Description (optional)</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="recipient">Recipient</string>
+    <string name="sender">Sender</string>
+    <string name="sender_account">Origin Account</string>
+    <string name="recipient_account">Recipient Account</string>
+    <string name="transference_to">Transfer to</string>
 </resources>

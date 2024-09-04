@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.vitoraguiardf.bobinabanking.R
+import com.vitoraguiardf.bobinabanking.databinding.FragmentQrCodeScanBinding
 
 class QrCodeScanFragment : Fragment() {
 
@@ -14,6 +14,7 @@ class QrCodeScanFragment : Fragment() {
         fun newInstance() = QrCodeScanFragment()
     }
 
+    private lateinit var binding: FragmentQrCodeScanBinding
     private val viewModel: QrCodeScanViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +27,7 @@ class QrCodeScanFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_qr_code_scan, container, false)
+        binding = FragmentQrCodeScanBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }

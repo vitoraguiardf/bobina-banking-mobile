@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.vitoraguiardf.bobinabanking.R
+import com.vitoraguiardf.bobinabanking.databinding.FragmentConfirmationBinding
 
 class ConfirmationFragment : Fragment() {
 
@@ -14,6 +14,7 @@ class ConfirmationFragment : Fragment() {
         fun newInstance() = ConfirmationFragment()
     }
 
+    private lateinit var binding: FragmentConfirmationBinding
     private val viewModel: ConfirmationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +27,7 @@ class ConfirmationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_confirmation, container, false)
+        binding = FragmentConfirmationBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }

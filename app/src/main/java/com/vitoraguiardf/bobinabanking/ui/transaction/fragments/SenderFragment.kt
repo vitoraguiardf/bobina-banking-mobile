@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.vitoraguiardf.bobinabanking.R
+import com.vitoraguiardf.bobinabanking.databinding.FragmentRecipientBinding
 
 class SenderFragment : Fragment() {
 
@@ -14,6 +14,7 @@ class SenderFragment : Fragment() {
         fun newInstance() = SenderFragment()
     }
 
+    private lateinit var binding: FragmentRecipientBinding
     private val viewModel: SenderViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +27,7 @@ class SenderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_sender, container, false)
+        binding = FragmentRecipientBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }

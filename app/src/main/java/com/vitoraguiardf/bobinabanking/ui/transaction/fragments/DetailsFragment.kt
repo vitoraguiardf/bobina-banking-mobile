@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.vitoraguiardf.bobinabanking.R
+import com.vitoraguiardf.bobinabanking.databinding.FragmentDetailsBinding
 import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
 
 class DetailsFragment : Fragment() {
@@ -15,6 +15,7 @@ class DetailsFragment : Fragment() {
         fun newInstance() = DetailsFragment()
     }
 
+    private lateinit var binding: FragmentDetailsBinding
     private lateinit var viewModel: DetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +29,7 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_details, container, false)
+        binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }

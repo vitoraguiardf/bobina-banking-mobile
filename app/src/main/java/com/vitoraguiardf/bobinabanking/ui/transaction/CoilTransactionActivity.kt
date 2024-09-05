@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.databinding.ActivityCoilTransactionBinding
 import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
+import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.ConfirmationFragment
+import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.DetailsFragment
+import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.QrCodeScanFragment
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.RecipientFragment
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.SenderFragment
 import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
@@ -48,6 +51,16 @@ class CoilTransactionActivity : CustomActivity<ActivityCoilTransactionBinding>()
                     TransferenceScenarios.TRANSFERENCE -> {
                         sharedModel.transferenceForm.setType("TRANSFERENCE")
                         fragmentTransaction.replace(R.id.container, RecipientFragment.newInstance())
+                    }
+                    /** Transferência entre contas - QrCode
+                     *  - TYPE: Tipo de Transferência: Transferência :: AUTOMATIC
+                     *  - DESTIN: Selecionar a conta do destinatário (QrCodeFragment) :: SEMI AUTOMATIC
+                     *  - ORIGIN: Selecionar a conta de origem e quantidade (SenderFragment) :: BY USER
+                     *  - Confirmação da Transação (ConfirmationFragment) :: BY USER
+                     */
+                    TransferenceScenarios.TRANSFERENCE_QRCODE -> {
+                        sharedModel.transferenceForm.setType("TRANSFERENCE")
+                        fragmentTransaction.replace(R.id.container, QrCodeScanFragment.newInstance())
                     }
                     else -> {
                         fragmentTransaction.replace(R.id.container, RecipientFragment.newInstance())

@@ -32,6 +32,24 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        binding.buttonConfirm.setOnClickListener {
+            try {
+                val description: String = binding.inputDescription.text.toString()
+                sharedModel.transferenceForm.setDescription(description)
+            } catch (exception: IllegalArgumentException) {
+                binding.inputDescription.error = exception.message
+            }
+            try {
+                val quantity: String = binding.inputQuantity.text.toString()
+                sharedModel.transferenceForm.setQuantity(when {
+                    quantity.isEmpty() -> throw IllegalArgumentException("Informe a quantidade")
+                    quantity.matches(Regex("^$[0-9]*")) -> throw IllegalArgumentException("Valor inválido")
+                    else -> quantity.toInt()
+                })
+            } catch (exception: IllegalArgumentException) {
+                binding.inputQuantity.error = exception.message
+            }
+        }
         return binding.root
     }
 }

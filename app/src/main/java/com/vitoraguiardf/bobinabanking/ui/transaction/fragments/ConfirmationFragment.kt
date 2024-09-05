@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.databinding.FragmentConfirmationBinding
+import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
+import com.vitoraguiardf.bobinabanking.ui.transaction.SharedViewModel
 
 class ConfirmationFragment : Fragment() {
 
@@ -15,12 +17,14 @@ class ConfirmationFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentConfirmationBinding
-    private val viewModel: ConfirmationViewModel by viewModels()
+    private lateinit var viewModel: ConfirmationViewModel
+    private lateinit var sharedModel: SharedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
+        val viewModelProvider = ViewModelProvider(requireActivity(), ViewModelFactory(resources))
+        viewModel = viewModelProvider[ConfirmationViewModel::class]
+        sharedModel = viewModelProvider[SharedViewModel::class]
     }
 
     override fun onCreateView(

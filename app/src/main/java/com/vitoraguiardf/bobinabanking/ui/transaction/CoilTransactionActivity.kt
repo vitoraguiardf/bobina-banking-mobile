@@ -1,17 +1,18 @@
 package com.vitoraguiardf.bobinabanking.ui.transaction
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.databinding.ActivityCoilTransactionBinding
+import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.RecipientFragment
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.SenderFragment
 import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
 
 class CoilTransactionActivity : CustomActivity<ActivityCoilTransactionBinding>() {
 
-    private val sharedModel: SharedViewModel by viewModels()
+    private lateinit var sharedModel: SharedViewModel
 
     override fun viewBindingInflate(): ActivityCoilTransactionBinding {
         return ActivityCoilTransactionBinding.inflate(layoutInflater)
@@ -19,6 +20,9 @@ class CoilTransactionActivity : CustomActivity<ActivityCoilTransactionBinding>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModelProvider = ViewModelProvider(this, ViewModelFactory(resources))
+        sharedModel = viewModelProvider[SharedViewModel::class]
+
         if (savedInstanceState == null) {
             val fragmentTransaction = supportFragmentManager.beginTransaction()
             sharedModel.transferenceForm.scenario.observe(this, Observer {

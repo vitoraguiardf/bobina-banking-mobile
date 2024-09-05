@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.databinding.FragmentDetailsBinding
 import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
+import com.vitoraguiardf.bobinabanking.ui.transaction.SharedViewModel
 
 class DetailsFragment : Fragment() {
 
@@ -17,12 +18,13 @@ class DetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
     private lateinit var viewModel: DetailsViewModel
+    private lateinit var sharedModel: SharedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModelProvider = ViewModelProvider(this, ViewModelFactory(resources))
+        val viewModelProvider = ViewModelProvider(requireActivity(), ViewModelFactory(resources))
         viewModel = viewModelProvider[DetailsViewModel::class]
-        // TODO: Use the ViewModel
+        sharedModel = viewModelProvider[SharedViewModel::class]
     }
 
     override fun onCreateView(

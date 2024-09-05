@@ -68,6 +68,18 @@ class CoilTransactionActivity : CustomActivity<ActivityCoilTransactionBinding>()
                 }
                 fragmentTransaction.commitNow()
             })
+            sharedModel.transferenceForm.recipient.observe(this, Observer {
+                it?:return@Observer
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, DetailsFragment.newInstance())
+                    .commitNow()
+            })
+            sharedModel.transferenceForm.quantity.observe(this, Observer {
+                it?:return@Observer
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, ConfirmationFragment.newInstance())
+                    .commitNow()
+            })
         }
         intent.serializable<TransferenceScenarios>("SCENARIO")?.let {
             sharedModel.transferenceForm.setScenario(it)

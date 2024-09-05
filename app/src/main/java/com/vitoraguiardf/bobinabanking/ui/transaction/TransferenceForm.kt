@@ -5,19 +5,25 @@ import androidx.lifecycle.MutableLiveData
 
 data class TransferenceForm(
     // Scenario
-    internal val internalScenario: MutableLiveData<TransferenceScenarios> = MutableLiveData<TransferenceScenarios>(),
+    private val internalScenario: MutableLiveData<TransferenceScenarios> = MutableLiveData<TransferenceScenarios>(),
     val scenario: LiveData<TransferenceScenarios> = internalScenario,
     // Type
-    internal val internalType: MutableLiveData<String?> = MutableLiveData<String?>(null),
+    private val internalType: MutableLiveData<String?> = MutableLiveData<String?>(null),
     val type: LiveData<String?> = internalType,
     // Sender
-    internal val internalSender: MutableLiveData<String?> = MutableLiveData<String?>(null),
+    private val internalSender: MutableLiveData<String?> = MutableLiveData<String?>(null),
     val sender: LiveData<String?> = internalSender,
     // Recipient
-    internal val internalRecipient: MutableLiveData<String?> = MutableLiveData<String?>(null),
+    private val internalRecipient: MutableLiveData<String?> = MutableLiveData<String?>(null),
     val recipient: LiveData<String?> = internalRecipient,
+    // Quantity
+    private val internalQuantity: MutableLiveData<Int?> = MutableLiveData<Int?>(null),
+    val quantity: LiveData<Int?> = internalQuantity,
+    // Description
+    private val internalDescription: MutableLiveData<String?> = MutableLiveData<String?>(null),
+    val description: LiveData<String?> = internalDescription,
     // Confirmation
-    internal val internalConfirmation: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false),
+    private val internalConfirmation: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false),
     val confirmation: LiveData<Boolean> = internalConfirmation,
 ) {
     fun setScenario(scenario: TransferenceScenarios) {
@@ -31,6 +37,12 @@ data class TransferenceForm(
     }
     fun setRecipient(recipient: String?) {
         internalRecipient.value = recipient
+    }
+    fun setQuantity(quantity: Int?) {
+        internalQuantity.value = quantity
+    }
+    fun setDescription(description: String?) {
+        internalDescription.value = description
     }
     fun confirm(confirm: Boolean = true) {
         internalConfirmation.value = confirm

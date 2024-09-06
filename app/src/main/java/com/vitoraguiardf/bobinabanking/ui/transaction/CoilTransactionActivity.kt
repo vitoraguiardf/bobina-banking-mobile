@@ -10,7 +10,6 @@ import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.ConfirmationFrag
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.DetailsFragment
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.QrCodeScanFragment
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.RecipientFragment
-import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.SenderFragment
 import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
 
 class CoilTransactionActivity : CustomActivity<ActivityCoilTransactionBinding>() {
@@ -27,9 +26,9 @@ class CoilTransactionActivity : CustomActivity<ActivityCoilTransactionBinding>()
         sharedModel = viewModelProvider[SharedViewModel::class]
 
         if (savedInstanceState == null) {
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
             sharedModel.transferenceForm.scenario.observe(this, Observer {
                 val scenario = it?: return@Observer
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
                 when (scenario) {
                     /** Registro de Uso (Impressão)
                      *  - TYPE: Tipo de Transferência: Utilização :: AUTOMATIC
@@ -40,7 +39,7 @@ class CoilTransactionActivity : CustomActivity<ActivityCoilTransactionBinding>()
                     TransferenceScenarios.USAGE -> {
                         sharedModel.transferenceForm.setType("USAGE")
                         sharedModel.transferenceForm.setRecipient(null)
-                        fragmentTransaction.replace(R.id.container, SenderFragment.newInstance())
+                        fragmentTransaction.replace(R.id.container, DetailsFragment.newInstance())
                     }
                     /** Transferência entre contas
                      *  - TYPE: Tipo de Transferência: Transferência :: AUTOMATIC
@@ -62,11 +61,7 @@ class CoilTransactionActivity : CustomActivity<ActivityCoilTransactionBinding>()
                         sharedModel.transferenceForm.setType("TRANSFERENCE")
                         fragmentTransaction.replace(R.id.container, QrCodeScanFragment.newInstance())
                     }
-                    else -> {
-                        fragmentTransaction.replace(R.id.container, RecipientFragment.newInstance())
-                    }
-                }
-                fragmentTransaction.commitNow()
+                }.commitNow()
             })
             sharedModel.transferenceForm.recipient.observe(this, Observer {
                 it?:return@Observer

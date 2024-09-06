@@ -35,9 +35,12 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edit_text_destin_key"
+                    android:inputType="text"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:imeActionLabel="@string/action_search"
+                    android:imeOptions="actionSearch"
                     android:hint="@string/hints_receiver_key" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
@@ -63,7 +66,7 @@
                 android:id="@+id/button_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/search"
+                android:text="@string/action_search"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

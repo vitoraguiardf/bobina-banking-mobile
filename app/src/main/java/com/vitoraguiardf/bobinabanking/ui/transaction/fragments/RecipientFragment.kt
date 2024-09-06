@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.databinding.FragmentRecipientBinding
 import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
 import com.vitoraguiardf.bobinabanking.ui.transaction.SharedViewModel
+import com.vitoraguiardf.bobinabanking.ui.transaction.TransferenceScenarios
 
 class RecipientFragment : Fragment() {
 
@@ -34,7 +35,11 @@ class RecipientFragment : Fragment() {
         binding = FragmentRecipientBinding.inflate(inflater, container, false)
 
         binding.buttonSearch.setOnClickListener {
-            binding.included.loading.visibility = View.VISIBLE
+            sharedModel.transferenceForm.setRecipient("RECIPIENT ACCOUNT")
+//            binding.included.loading.visibility = View.VISIBLE
+        }
+        binding.buttonScan.setOnClickListener {
+            sharedModel.transferenceForm.setScenario(TransferenceScenarios.TRANSFERENCE_QRCODE)
         }
         binding.included.loading.setOnClickListener {
             binding.included.loading.visibility = View.GONE

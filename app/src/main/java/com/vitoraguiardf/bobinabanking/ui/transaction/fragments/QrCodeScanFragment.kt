@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.databinding.FragmentQrCodeScanBinding
+import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
+import com.vitoraguiardf.bobinabanking.ui.transaction.SharedViewModel
 
 class QrCodeScanFragment : Fragment() {
 
@@ -15,12 +17,14 @@ class QrCodeScanFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentQrCodeScanBinding
-    private val viewModel: QrCodeScanViewModel by viewModels()
+    private lateinit var sharedModel: SharedViewModel
+    private lateinit var viewModel: QrCodeScanViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
+        val viewModelProvider = ViewModelProvider(requireActivity(), ViewModelFactory(resources))
+        viewModel = viewModelProvider[QrCodeScanViewModel::class]
+        sharedModel = viewModelProvider[SharedViewModel::class]
     }
 
     override fun onCreateView(

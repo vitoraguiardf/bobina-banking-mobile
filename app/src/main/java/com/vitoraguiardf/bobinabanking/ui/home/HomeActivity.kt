@@ -77,19 +77,24 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
         })
 
         binding.textViewUserName.text = Singleton.instance.user.name
-        binding.buttonSend.setOnClickListener { _ ->
-            val intent = Intent(this, CoilTransactionActivity::class.java)
-            intent.putExtra("SCENARIO", TransferenceScenarios.TRANSFERENCE)
-            launcher.launch(intent)
-        }
         binding.buttonUse.setOnClickListener { _ ->
-            val intent = Intent(this, CoilTransactionActivity::class.java)
-            intent.putExtra("SCENARIO", TransferenceScenarios.USAGE)
-            launcher.launch(intent)
+            startTransaction(TransferenceScenarios.USAGE)
+        }
+        binding.buttonQrcodeScan.setOnClickListener { _ ->
+            startTransaction(TransferenceScenarios.TRANSFERENCE_QRCODE)
+        }
+        binding.buttonSend.setOnClickListener { _ ->
+            startTransaction(TransferenceScenarios.TRANSFERENCE)
         }
 
         vmUserResume.resume()
         viewModel.getData()
+    }
+
+    private fun startTransaction(scenario: TransferenceScenarios) {
+        val intent = Intent(this, CoilTransactionActivity::class.java)
+        intent.putExtra("SCENARIO", scenario)
+        launcher.launch(intent)
     }
 
     override fun onPostResume() {

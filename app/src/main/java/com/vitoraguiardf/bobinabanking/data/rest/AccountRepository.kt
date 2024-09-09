@@ -11,4 +11,8 @@ class AccountRepository: AbstractRestRepository() {
         return execute(retrofit.get())
     }
 
+    suspend fun search(email: String): Result<Array<Account>> {
+        return execute(retrofit.search(email))
+    }
+
 }

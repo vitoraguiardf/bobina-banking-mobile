@@ -13,6 +13,7 @@ import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
 import com.vitoraguiardf.bobinabanking.ui.adapters.TransactionAdapter
 import com.vitoraguiardf.bobinabanking.ui.transaction.CoilTransactionActivity
 import com.vitoraguiardf.bobinabanking.ui.transaction.TransferenceScenarios
+import com.vitoraguiardf.bobinabanking.utils.FastMessages
 import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
 import java.util.Locale
@@ -43,7 +44,7 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
         })
         viewModel.form.throwable.observe(this, Observer {
             val throwable = it?: return@Observer
-            Toast.makeText(this, throwable.message, Toast.LENGTH_LONG).show()
+            FastMessages.error(this, throwable.message)
         })
         viewModel.form.result.observe(this, Observer {
             val result = it?: return@Observer

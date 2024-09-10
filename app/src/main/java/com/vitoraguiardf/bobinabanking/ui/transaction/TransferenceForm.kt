@@ -2,6 +2,7 @@ package com.vitoraguiardf.bobinabanking.ui.transaction
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.vitoraguiardf.bobinabanking.data.entity.Account
 
 data class TransferenceForm(
     // Scenario
@@ -14,8 +15,8 @@ data class TransferenceForm(
     private val internalSender: MutableLiveData<String?> = MutableLiveData<String?>(null),
     val sender: LiveData<String?> = internalSender,
     // Recipient
-    private val internalRecipient: MutableLiveData<String?> = MutableLiveData<String?>(null),
-    val recipient: LiveData<String?> = internalRecipient,
+    private val internalRecipient: MutableLiveData<Account?> = MutableLiveData<Account?>(null),
+    val recipient: LiveData<Account?> = internalRecipient,
     // Quantity
     private val internalQuantity: MutableLiveData<Int?> = MutableLiveData<Int?>(null),
     val quantity: LiveData<Int?> = internalQuantity,
@@ -35,7 +36,7 @@ data class TransferenceForm(
     fun setSender(sender: String?) {
         internalSender.value = sender
     }
-    fun setRecipient(recipient: String?) {
+    fun setRecipient(recipient: Account?) {
         internalRecipient.value = recipient
     }
     fun setQuantity(quantity: Int?) {

@@ -31,7 +31,12 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val recipientAccount = sharedModel.transferenceForm.recipient.value
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        recipientAccount?.let {
+            binding.cardAccount.username.text = it.holderName
+            binding.cardAccount.account.text = it.name
+        }
         binding.buttonConfirm.setOnClickListener {
             try {
                 val description: String = binding.inputDescription.text.toString()

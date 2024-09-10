@@ -21,15 +21,15 @@ abstract class AbstractRecyclerViewAdapter<Type, ViewBinder: androidx.viewbindin
     override fun onBindViewHolder(holder: ViewBinderHolder<Type, ViewBinder>, position: Int) {
         holder.bind(items[position])
         holder.itemView.setOnClickListener { _ ->
-            if (onItemClickListener != null) onItemClickListener!!.onClick(
-                holder.viewBinder, items[position]
-            )
+            onItemClickListener?.let { it(holder.viewBinder, items[position]) }
         }
         holder.itemView.setOnLongClickListener { _ ->
-            if (onItemLongClickListener != null) onItemLongClickListener!!.onLongClick(
-                holder.viewBinder, items[position]
-            )
-            true
+            return@setOnLongClickListener onItemLongClickListener.let {
+                if (it!=null)
+                    it(holder.viewBinder, items[position])
+                else
+                    false
+            }
         }
     }
 
@@ -40,20 +40,13 @@ abstract class AbstractRecyclerViewAdapter<Type, ViewBinder: androidx.viewbindin
         abstract fun bind(item: Type)
     }
 
-    interface OnItemClickListener<ViewBinder, Type> {
-        fun onClick(binder: ViewBinder, item: Type)
-    }
-    interface OnItemLongClickListener<ViewBinder, Type> {
-        fun onLongClick(view: ViewBinder, item: Type)
-    }
+    private var onItemClickListener: ((view: ViewBinder, item: Type)->Unit)? = null
+    private var onItemLongClickListener: ((view: ViewBinder, item: Type)->Boolean)? = null
 
-    private var onItemClickListener: OnItemClickListener<ViewBinder, Type>? = null
-    private var onItemLongClickListener: OnItemLongClickListener<ViewBinder, Type>? = null
-
-    fun setOnItemClickListener(onItemClickListener: OnItemClickListener<ViewBinder, Type>) {
+    fun setOnItemClickListener(onItemClickListener: ((view: ViewBinder, item: Type)->Unit)) {
         this.onItemClickListener = onItemClickListener
     }
-    fun setOnItemLongClickListener(onItemLongClickListener: OnItemLongClickListener<ViewBinder, Type>) {
+    fun setOnItemLongClickListener(onItemLongClickListener: ((view: ViewBinder, item: Type)->Boolean)) {
         this.onItemLongClickListener = onItemLongClickListener
     }
 

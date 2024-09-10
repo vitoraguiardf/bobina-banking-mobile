@@ -4,11 +4,11 @@ import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class AbstractViewBinderAdapter<Type, ViewBinder: androidx.viewbinding.ViewBinding>(
+abstract class AbstractRecyclerViewBinderAdapter<Type, ViewBinder: androidx.viewbinding.ViewBinding>(
     val context: Context,
     private val items: Array<Type>,
 ):
-    RecyclerView.Adapter<AbstractViewBinderAdapter.ViewBinderHolder<Type, ViewBinder>>() {
+    RecyclerView.Adapter<AbstractRecyclerViewBinderAdapter.ViewBinderHolder<Type, ViewBinder>>() {
 
     override fun getItemCount(): Int {
         return items.size

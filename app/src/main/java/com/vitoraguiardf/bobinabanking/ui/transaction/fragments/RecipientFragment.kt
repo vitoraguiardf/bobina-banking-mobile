@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.databinding.FragmentRecipientBinding
 import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
-import com.vitoraguiardf.bobinabanking.ui.adapters.AccountAdapter
+import com.vitoraguiardf.bobinabanking.ui.adapters.AccountAdapterRecycler
 import com.vitoraguiardf.bobinabanking.ui.transaction.SharedViewModel
 import com.vitoraguiardf.bobinabanking.ui.transaction.TransferenceScenarios
 import com.vitoraguiardf.bobinabanking.utils.FastMessages
@@ -63,7 +63,7 @@ class RecipientFragment : Fragment() {
         })
         viewModel.form.result.observe(viewLifecycleOwner, Observer {
             val items = it?:return@Observer
-            val adapter = AccountAdapter(requireContext(), items)
+            val adapter = AccountAdapterRecycler(requireContext(), items)
             binding.listItems.adapter = adapter
         })
 

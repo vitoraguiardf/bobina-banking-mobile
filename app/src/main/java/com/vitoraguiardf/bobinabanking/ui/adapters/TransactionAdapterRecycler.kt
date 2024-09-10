@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.data.entity.CoilTransactionFull
 import com.vitoraguiardf.bobinabanking.databinding.LayoutTransactionItemBinding
-import com.vitoraguiardf.bobinabanking.utils.adapters.AbstractViewBinderAdapter
+import com.vitoraguiardf.bobinabanking.utils.adapters.AbstractRecyclerViewBinderAdapter
 import com.vitoraguiardf.bobinabanking.utils.datetime.TimeUtils
 import java.util.Locale
 
-class TransactionAdapter(context: Context, items: Array<CoilTransactionFull>):
-    AbstractViewBinderAdapter<CoilTransactionFull, LayoutTransactionItemBinding>(context, items) {
+class TransactionAdapterRecycler(context: Context, items: Array<CoilTransactionFull>):
+    AbstractRecyclerViewBinderAdapter<CoilTransactionFull, LayoutTransactionItemBinding>(context, items) {
 
     override fun viewHolder(parent: ViewGroup?): ViewBinderHolder<CoilTransactionFull, LayoutTransactionItemBinding> {
         val binder = LayoutTransactionItemBinding.inflate(

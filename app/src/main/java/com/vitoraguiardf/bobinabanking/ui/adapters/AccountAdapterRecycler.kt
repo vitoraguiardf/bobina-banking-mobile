@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.vitoraguiardf.bobinabanking.data.entity.Account
 import com.vitoraguiardf.bobinabanking.databinding.LayoutTransactionItemBinding
-import com.vitoraguiardf.bobinabanking.utils.adapters.AbstractViewBinderAdapter
+import com.vitoraguiardf.bobinabanking.utils.adapters.AbstractRecyclerViewBinderAdapter
 
-class AccountAdapter(context: Context, items: Array<Account>):
-    AbstractViewBinderAdapter<Account, LayoutTransactionItemBinding>(context, items) {
+class AccountAdapterRecycler(context: Context, items: Array<Account>):
+    AbstractRecyclerViewBinderAdapter<Account, LayoutTransactionItemBinding>(context, items) {
     override fun viewHolder(parent: ViewGroup?): ViewBinderHolder<Account, LayoutTransactionItemBinding> {
         val binder = LayoutTransactionItemBinding.inflate(
             LayoutInflater.from(parent!!.context), parent, false)

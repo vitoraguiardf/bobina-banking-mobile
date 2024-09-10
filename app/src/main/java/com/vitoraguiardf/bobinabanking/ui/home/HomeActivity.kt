@@ -10,7 +10,7 @@ import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.Singleton
 import com.vitoraguiardf.bobinabanking.databinding.ActivityHomeBinding
 import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
-import com.vitoraguiardf.bobinabanking.ui.adapters.TransactionAdapter
+import com.vitoraguiardf.bobinabanking.ui.adapters.TransactionAdapterRecycler
 import com.vitoraguiardf.bobinabanking.ui.transaction.CoilTransactionActivity
 import com.vitoraguiardf.bobinabanking.ui.transaction.TransferenceScenarios
 import com.vitoraguiardf.bobinabanking.utils.FastMessages
@@ -48,7 +48,7 @@ class HomeActivity : CustomActivity<ActivityHomeBinding>() {
         })
         viewModel.form.result.observe(this, Observer {
             val result = it?: return@Observer
-            val adapter = TransactionAdapter(this, result.toTypedArray())
+            val adapter = TransactionAdapterRecycler(this, result.toTypedArray())
             binding.recyclerViewLancamentos.adapter = adapter
         })
 

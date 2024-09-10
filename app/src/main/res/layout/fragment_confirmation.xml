@@ -81,6 +81,16 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_origin_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/button_confirm" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_confirm"
             android:layout_width="match_parent"

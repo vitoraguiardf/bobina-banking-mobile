@@ -6,14 +6,10 @@ import androidx.viewbinding.ViewBinding
 
 abstract class AbstractAlertDialogBuilder<ViewBinder: ViewBinding>(context: Context) :
     AlertDialog.Builder(context) {
-
     var binding: ViewBinder
-
     init {
         binding = this.viewBindingInflate()
         this.setView(binding.root)
     }
-
     abstract fun viewBindingInflate(): ViewBinder
-
 }

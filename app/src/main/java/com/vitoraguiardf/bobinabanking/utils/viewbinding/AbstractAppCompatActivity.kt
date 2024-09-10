@@ -1,4 +1,4 @@
-package com.vitoraguiardf.bobinabanking.utils.activities
+package com.vitoraguiardf.bobinabanking.utils.viewbinding
 
 import android.content.Intent
 import android.os.Build
@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.vitoraguiardf.bobinabanking.Singleton
 import java.io.Serializable
 
-abstract class CustomActivity<ViewBinding: androidx.viewbinding.ViewBinding>:
+abstract class AbstractAppCompatActivity<ViewBinding: androidx.viewbinding.ViewBinding>:
     AppCompatActivity() {
 
     lateinit var binding: ViewBinding

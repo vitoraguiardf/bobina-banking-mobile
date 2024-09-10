@@ -10,9 +10,9 @@ import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.ConfirmationFrag
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.DetailsFragment
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.QrCodeScanFragment
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.RecipientFragment
-import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
+import com.vitoraguiardf.bobinabanking.utils.viewbinding.AbstractAppCompatActivity
 
-class CoilTransactionActivity : CustomActivity<ActivityCoilTransactionBinding>() {
+class CoilTransactionActivity : AbstractAppCompatActivity<ActivityCoilTransactionBinding>() {
 
     private lateinit var sharedModel: SharedViewModel
 

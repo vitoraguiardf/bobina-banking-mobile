@@ -11,10 +11,10 @@ import com.vitoraguiardf.bobinabanking.databinding.ActivityMainBinding
 import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
 import com.vitoraguiardf.bobinabanking.ui.home.HomeActivity
 import com.vitoraguiardf.bobinabanking.ui.login.LoginActivity
-import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
+import com.vitoraguiardf.bobinabanking.utils.viewbinding.AbstractAppCompatActivity
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
 
-class MainActivity : CustomActivity<ActivityMainBinding>() {
+class MainActivity : AbstractAppCompatActivity<ActivityMainBinding>() {
     private lateinit var viewModel: MainViewModel
 
     override fun viewBindingInflate(): ActivityMainBinding {

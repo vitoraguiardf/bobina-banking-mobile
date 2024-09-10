@@ -1,14 +1,14 @@
-package com.vitoraguiardf.bobinabanking.utils.adapters
+package com.vitoraguiardf.bobinabanking.utils.viewbinding
 
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class AbstractRecyclerViewBinderAdapter<Type, ViewBinder: androidx.viewbinding.ViewBinding>(
+abstract class AbstractRecyclerViewAdapter<Type, ViewBinder: androidx.viewbinding.ViewBinding>(
     val context: Context,
     private val items: Array<Type>,
 ):
-    RecyclerView.Adapter<AbstractRecyclerViewBinderAdapter.ViewBinderHolder<Type, ViewBinder>>() {
+    RecyclerView.Adapter<AbstractRecyclerViewAdapter.ViewBinderHolder<Type, ViewBinder>>() {
 
     override fun getItemCount(): Int {
         return items.size

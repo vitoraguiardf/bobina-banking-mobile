@@ -14,11 +14,11 @@ import com.vitoraguiardf.bobinabanking.ui.adapters.TransactionAdapterRecycler
 import com.vitoraguiardf.bobinabanking.ui.transaction.CoilTransactionActivity
 import com.vitoraguiardf.bobinabanking.ui.transaction.TransferenceScenarios
 import com.vitoraguiardf.bobinabanking.utils.FastMessages
-import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
+import com.vitoraguiardf.bobinabanking.utils.viewbinding.AbstractAppCompatActivity
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
 import java.util.Locale
 
-class HomeActivity : CustomActivity<ActivityHomeBinding>() {
+class HomeActivity : AbstractAppCompatActivity<ActivityHomeBinding>() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var vmUserResume: UserResumeViewModel
 

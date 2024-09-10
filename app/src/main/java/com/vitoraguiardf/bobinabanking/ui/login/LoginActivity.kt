@@ -12,10 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.databinding.ActivityLoginBinding
 import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
-import com.vitoraguiardf.bobinabanking.utils.activities.CustomActivity
+import com.vitoraguiardf.bobinabanking.utils.viewbinding.AbstractAppCompatActivity
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.FormState
 
-class LoginActivity: CustomActivity<ActivityLoginBinding>() {
+class LoginActivity: AbstractAppCompatActivity<ActivityLoginBinding>() {
     private lateinit var loginViewModel: LoginViewModel
 
     override fun viewBindingInflate(): ActivityLoginBinding {

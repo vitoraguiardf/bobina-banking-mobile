@@ -46,7 +46,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
                 android:textSize="20sp"
-                android:text="VITOR EVANGELISTA DOS REIS AGUIAR"
                 android:textColor="@color/primary" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -55,7 +54,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
                 android:textSize="14sp"
-                android:text="vitoraguiar.df@gmail.com"
                 android:textColor="@color/secondary" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -63,7 +61,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Mochila"
                 android:textSize="18sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -71,7 +68,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="50 unidades"
                 android:textSize="32sp" />
 
             <com.google.android.material.divider.MaterialDivider

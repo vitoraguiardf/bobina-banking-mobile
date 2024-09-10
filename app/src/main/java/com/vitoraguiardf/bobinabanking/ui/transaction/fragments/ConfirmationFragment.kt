@@ -37,8 +37,8 @@ class ConfirmationFragment : Fragment() {
         val quantity = sharedModel.transferenceForm.quantity.value
         val description = sharedModel.transferenceForm.description.value
         recipientAccount?.let {
-            binding.username.text = it.holderName
-            binding.accountName.text = it.name
+            binding.username.text = it.holderName.uppercase()
+            binding.accountName.text = it.name.uppercase()
         }
         quantity?.let {
             binding.quantity.text = String.format("%s %s",

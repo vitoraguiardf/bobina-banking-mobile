@@ -34,8 +34,8 @@ class DetailsFragment : Fragment() {
         val recipientAccount = sharedModel.transferenceForm.recipient.value
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
         recipientAccount?.let {
-            binding.cardAccount.username.text = it.holderName
-            binding.cardAccount.account.text = it.name
+            binding.cardAccount.username.text = it.holderName.uppercase()
+            binding.cardAccount.account.text = it.name.uppercase()
         }
         binding.buttonConfirm.setOnClickListener {
             try {

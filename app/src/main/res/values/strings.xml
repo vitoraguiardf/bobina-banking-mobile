@@ -70,4 +70,5 @@
     <string name="recipient_account">Recipient Account</string>
     <string name="transference_to">Transfer to</string>
     <string name="coils">coils</string>
+    <string name="from">from</string>
 </resources>

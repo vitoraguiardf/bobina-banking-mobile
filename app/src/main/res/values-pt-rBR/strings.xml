@@ -64,4 +64,5 @@
     <string name="recipient_account">Conta Destino</string>
     <string name="transference_to">Transferência para</string>
     <string name="coils">bobinas</string>
+    <string name="from">de</string>
 </resources>

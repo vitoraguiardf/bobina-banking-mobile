@@ -35,6 +35,7 @@ class ConfirmationFragment : Fragment() {
         binding = FragmentConfirmationBinding.inflate(inflater, container, false)
         val recipientAccount = sharedModel.transferenceForm.recipient.value
         val quantity = sharedModel.transferenceForm.quantity.value
+        val description = sharedModel.transferenceForm.description.value
         recipientAccount?.let {
             binding.username.text = it.holderName
             binding.accountName.text = it.name
@@ -42,6 +43,9 @@ class ConfirmationFragment : Fragment() {
         quantity?.let {
             binding.quantity.text = String.format("%s %s",
                 it, getString(R.string.unities))
+        }
+        description?.let {
+            binding.description.text = it
         }
         return binding.root
     }

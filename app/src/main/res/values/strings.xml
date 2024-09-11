@@ -73,4 +73,5 @@
     <string name="from">from</string>
     <string name="account">Account</string>
     <string name="user">User</string>
+    <string name="cancel">cancel</string>
 </resources>

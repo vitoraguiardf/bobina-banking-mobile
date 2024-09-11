@@ -13,9 +13,7 @@ class DetailsViewModel(private val resources: Resources) : ViewModel<Int, Array<
             Singleton.instance.runDatabase { database ->
                 accounts = database.accountDao().findAll()
             }
-            accounts?.let {
-                success(it)
-            }
+            accounts?.let { success(it) }
         }
     }
 

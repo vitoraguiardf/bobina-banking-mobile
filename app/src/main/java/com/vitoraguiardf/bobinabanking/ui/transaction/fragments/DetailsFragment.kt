@@ -34,11 +34,6 @@ class DetailsFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
-        val recipientAccount = sharedModel.transferenceForm.recipient.value
-        recipientAccount?.let {
-            binding.cardAccount.username.text = it.holderName.uppercase()
-            binding.cardAccount.account.text = it.name.uppercase()
-        }
         viewModel.form.result.observe(requireActivity(), Observer {
             val accounts = it?: return@Observer
             val adapter = AccountAdapterRecycler(requireContext(), accounts)

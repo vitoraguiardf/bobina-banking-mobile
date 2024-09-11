@@ -65,4 +65,6 @@
     <string name="transference_to">Transferência para</string>
     <string name="coils">bobinas</string>
     <string name="from">de</string>
+    <string name="account">Conta</string>
+    <string name="user">Usuário</string>
 </resources>

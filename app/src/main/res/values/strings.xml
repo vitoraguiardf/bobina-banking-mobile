@@ -71,4 +71,6 @@
     <string name="transference_to">Transfer to</string>
     <string name="coils">coils</string>
     <string name="from">from</string>
+    <string name="account">Account</string>
+    <string name="user">User</string>
 </resources>

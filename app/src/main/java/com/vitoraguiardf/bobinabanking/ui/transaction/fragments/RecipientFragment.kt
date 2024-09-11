@@ -76,8 +76,8 @@ class RecipientFragment : Fragment() {
                 val dialog: AlertDialog = dialogBuilder.create()
                 dialogBuilder.binding.cardAccount.username.text = item.holderName.uppercase()
                 dialogBuilder.binding.cardAccount.account.text = item.name.uppercase()
-                dialogBuilder.binding.buttonNo.setOnClickListener { _ -> dialog.dismiss() }
-                dialogBuilder.binding.buttonYes.setOnClickListener { _ ->
+                dialogBuilder.binding.cardConfirmation.buttonNo.setOnClickListener { _ -> dialog.dismiss() }
+                dialogBuilder.binding.cardConfirmation.buttonYes.setOnClickListener { _ ->
                     sharedModel.transferenceForm.setRecipient(item)
                     dialog.dismiss()
                 }

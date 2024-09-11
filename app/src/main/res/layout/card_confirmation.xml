@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="8dp"
+        android:layout_weight="1">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_no"
+            android:background="@color/light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:textColor="@color/danger"
+            android:textSize="28sp"
+            android:padding="10dp" />
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="8dp"
+        android:layout_weight="1">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_yes"
+            android:background="@color/light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/yes"
+            android:textColor="@color/success"
+            android:textSize="28sp"
+            android:padding="10dp" />
+    </androidx.cardview.widget.CardView>
+</androidx.appcompat.widget.LinearLayoutCompat>

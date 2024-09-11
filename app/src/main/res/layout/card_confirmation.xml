@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         app:cardCornerRadius="10dp"
-        android:layout_margin="8dp"
+        android:layout_margin="5dp"
         android:layout_weight="1">
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_no"
@@ -18,14 +18,14 @@
             android:layout_height="wrap_content"
             android:text="@string/cancel"
             android:textColor="@color/danger"
-            android:textSize="28sp"
-            android:padding="10dp" />
+            android:textSize="22sp"
+            android:padding="8dp" />
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         app:cardCornerRadius="10dp"
-        android:layout_margin="8dp"
+        android:layout_margin="5dp"
         android:layout_weight="1">
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_yes"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="@string/yes"
             android:textColor="@color/success"
-            android:textSize="28sp"
-            android:padding="10dp" />
+            android:textSize="22sp"
+            android:padding="8dp" />
     </androidx.cardview.widget.CardView>
 </androidx.appcompat.widget.LinearLayoutCompat>

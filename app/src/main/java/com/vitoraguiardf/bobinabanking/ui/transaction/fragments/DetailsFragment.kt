@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.vitoraguiardf.bobinabanking.databinding.FragmentDetailsBinding
 import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
+import com.vitoraguiardf.bobinabanking.ui.adapters.AccountAdapterRecycler
 import com.vitoraguiardf.bobinabanking.ui.transaction.SharedViewModel
 
-class DetailsFragment : Fragment() {
+class DetailsFragment: Fragment() {
 
     companion object {
         fun newInstance() = DetailsFragment()
@@ -31,12 +33,21 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val recipientAccount = sharedModel.transferenceForm.recipient.value
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        val recipientAccount = sharedModel.transferenceForm.recipient.value
         recipientAccount?.let {
             binding.cardAccount.username.text = it.holderName.uppercase()
             binding.cardAccount.account.text = it.name.uppercase()
         }
+        viewModel.form.result.observe(requireActivity(), Observer {
+            val accounts = it?: return@Observer
+            val adapter = AccountAdapterRecycler(requireContext(), accounts)
+            adapter.setOnItemClickListener { _, item ->
+                sharedModel.transferenceForm.setSender(item)
+            }
+            binding.listItems.adapter = adapter
+        })
+        viewModel.getAccounts()
         binding.buttonConfirm.setOnClickListener {
             try {
                 val description: String = binding.inputDescription.text.toString()

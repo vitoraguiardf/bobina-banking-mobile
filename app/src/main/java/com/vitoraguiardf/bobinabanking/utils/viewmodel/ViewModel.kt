@@ -38,6 +38,13 @@ open class ViewModel<Progress, Result, FormValidator>(
         }
     }
 
+    protected suspend fun finish () {
+        log("FINISHED")
+        dispatchMain {
+            this@ViewModel.form.internalState.value = FormState.FINISHED
+        }
+    }
+
     protected suspend fun log (vararg messages: String) {
         dispatchMain {
             for (message in messages) {
@@ -49,6 +56,14 @@ open class ViewModel<Progress, Result, FormValidator>(
     fun dispatchMain (block: () -> Unit) {
         viewModelScope.launch (Dispatchers.Main) {
             block()
+        }
+    }
+
+    fun doInBackground (block: (suspend () -> Unit)) {
+        viewModelScope.launch (Dispatchers.IO) {
+            start()
+            block()
+            finish()
         }
     }
 

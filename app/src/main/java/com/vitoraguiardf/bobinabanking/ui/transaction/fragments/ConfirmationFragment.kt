@@ -10,6 +10,7 @@ import com.vitoraguiardf.bobinabanking.R
 import com.vitoraguiardf.bobinabanking.databinding.FragmentConfirmationBinding
 import com.vitoraguiardf.bobinabanking.ui.ViewModelFactory
 import com.vitoraguiardf.bobinabanking.ui.transaction.SharedViewModel
+import com.vitoraguiardf.bobinabanking.ui.transaction.TransferenceScenarios
 
 class ConfirmationFragment : Fragment() {
 
@@ -33,19 +34,42 @@ class ConfirmationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentConfirmationBinding.inflate(inflater, container, false)
+        val scenario = sharedModel.transferenceForm.scenario.value
+        val senderAccount = sharedModel.transferenceForm.sender.value
         val recipientAccount = sharedModel.transferenceForm.recipient.value
         val quantity = sharedModel.transferenceForm.quantity.value
         val description = sharedModel.transferenceForm.description.value
-        recipientAccount?.let {
-            binding.username.text = it.holderName.uppercase()
-            binding.accountName.text = it.name.uppercase()
+        binding.recipientContent.visibility = when (scenario) {
+            TransferenceScenarios.USAGE -> {
+                binding.transactionName.text = getString(R.string.usage)
+                View.GONE
+            }
+            else -> {
+                binding.transactionName.text = getString(R.string.transference)
+                recipientAccount?.let {
+                    binding.recipientUsername.text = it.holderName.uppercase()
+                    binding.recipientAccountName.text = it.name.uppercase()
+                    binding.recipientAccountKey.text = it.name.uppercase()
+                }
+                View.VISIBLE
+            }
         }
-        quantity?.let {
-            binding.quantity.text = String.format("%s %s",
-                it, getString(R.string.unities))
-        }
-        description?.let {
-            binding.description.text = it
+        binding.quantity.text = String.format("%s %s",
+            quantity?: throw IllegalArgumentException()
+            , getString(R.string.unities))
+        binding.descriptionContent.visibility =
+            if (description.isNullOrEmpty()) {
+                View.GONE
+            } else {
+                binding.description.text = description
+                View.VISIBLE
+            }
+        when (senderAccount) {
+            null -> throw IllegalArgumentException(getString(R.string.business_logic_has_broken))
+            else -> {
+                binding.senderUsername.text = senderAccount.holderName
+                binding.senderAccountName.text = senderAccount.name
+            }
         }
         return binding.root
     }

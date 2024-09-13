@@ -31,34 +31,28 @@ class CoilTransactionActivity : AbstractAppCompatActivity<ActivityCoilTransactio
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
                 when (scenario) {
                     /** Registro de Uso (Impressão)
-                     *  - TYPE: Tipo de Transferência: Utilização :: AUTOMATIC
                      *  - DESTIN: NULL :: AUTOMATIC
                      *  - ORIGIN: Selecionar a conta de origem e quantidade (SenderFragment) :: BY USER
                      *  - Confirmação da Transação (ConfirmationFragment) :: BY USER
                      */
                     TransferenceScenarios.USAGE -> {
-                        sharedModel.transferenceForm.setType("USAGE")
                         sharedModel.transferenceForm.setRecipient(null)
                         fragmentTransaction.replace(R.id.container, DetailsFragment.newInstance())
                     }
                     /** Transferência entre contas
-                     *  - TYPE: Tipo de Transferência: Transferência :: AUTOMATIC
                      *  - DESTIN: Selecionar a conta do destinatário (RecipientFragment) :: BY USER
                      *  - ORIGIN: Selecionar a conta de origem e quantidade (SenderFragment) :: BY USER
                      *  - Confirmação da Transação (ConfirmationFragment) :: BY USER
                      */
                     TransferenceScenarios.TRANSFERENCE -> {
-                        sharedModel.transferenceForm.setType("TRANSFERENCE")
                         fragmentTransaction.replace(R.id.container, RecipientFragment.newInstance())
                     }
                     /** Transferência entre contas - QrCode
-                     *  - TYPE: Tipo de Transferência: Transferência :: AUTOMATIC
                      *  - DESTIN: Selecionar a conta do destinatário (QrCodeFragment) :: SEMI AUTOMATIC
                      *  - ORIGIN: Selecionar a conta de origem e quantidade (SenderFragment) :: BY USER
                      *  - Confirmação da Transação (ConfirmationFragment) :: BY USER
                      */
                     TransferenceScenarios.TRANSFERENCE_QRCODE -> {
-                        sharedModel.transferenceForm.setType("TRANSFERENCE")
                         fragmentTransaction.replace(R.id.container, QrCodeScanFragment.newInstance())
                     }
                 }.commitNow()

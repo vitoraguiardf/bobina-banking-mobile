@@ -10,6 +10,7 @@ import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.ConfirmationFrag
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.DetailsFragment
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.QrCodeScanFragment
 import com.vitoraguiardf.bobinabanking.ui.transaction.fragments.RecipientFragment
+import com.vitoraguiardf.bobinabanking.utils.FastMessages
 import com.vitoraguiardf.bobinabanking.utils.viewbinding.AbstractAppCompatActivity
 
 class CoilTransactionActivity : AbstractAppCompatActivity<ActivityCoilTransactionBinding>() {
@@ -68,6 +69,20 @@ class CoilTransactionActivity : AbstractAppCompatActivity<ActivityCoilTransactio
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.container, ConfirmationFragment.newInstance())
                     .commitNow()
+            })
+            sharedModel.transferenceForm.confirmation.observe(this, Observer {
+                if (!it) return@Observer
+                sharedModel.postTransaction()
+            })
+            sharedModel.form.result.observe(this, Observer {
+                val message = it?:return@Observer
+                FastMessages.success(this@CoilTransactionActivity, message.message)
+                setResult(RESULT_OK)
+                finish()
+            })
+            sharedModel.form.throwable.observe(this, Observer {
+                val error = it?:return@Observer
+                FastMessages.error(this@CoilTransactionActivity, error.message)
             })
         }
         intent.serializable<TransferenceScenarios>("SCENARIO")?.let {

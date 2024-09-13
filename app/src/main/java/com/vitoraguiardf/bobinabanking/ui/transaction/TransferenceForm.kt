@@ -8,9 +8,6 @@ data class TransferenceForm(
     // Scenario
     private val internalScenario: MutableLiveData<TransferenceScenarios> = MutableLiveData<TransferenceScenarios>(),
     val scenario: LiveData<TransferenceScenarios> = internalScenario,
-    // Type
-    private val internalType: MutableLiveData<String?> = MutableLiveData<String?>(null),
-    val type: LiveData<String?> = internalType,
     // Sender
     private val internalSender: MutableLiveData<Account?> = MutableLiveData<Account?>(null),
     val sender: LiveData<Account?> = internalSender,
@@ -29,9 +26,6 @@ data class TransferenceForm(
 ) {
     fun setScenario(scenario: TransferenceScenarios) {
         internalScenario.value = scenario
-    }
-    fun setType(type: String?) {
-        internalType.value = type
     }
     fun setSender(sender: Account?) {
         internalSender.value = sender

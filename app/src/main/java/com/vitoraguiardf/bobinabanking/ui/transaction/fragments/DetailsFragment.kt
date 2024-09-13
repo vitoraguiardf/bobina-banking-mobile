@@ -34,6 +34,9 @@ class DetailsFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        sharedModel.transferenceForm.sender.observe(requireActivity(), Observer {
+            binding.buttonConfirm.isEnabled = it != null
+        })
         viewModel.form.result.observe(requireActivity(), Observer {
             val accounts = it?: return@Observer
             val adapter = AccountAdapterRecycler(requireContext(), accounts)

@@ -69,10 +69,15 @@
     <string name="sender_account">Origin Account</string>
     <string name="recipient_account">Recipient Account</string>
     <string name="transference_to">Transfer to</string>
-    <string name="coils">coils</string>
+    <string name="coils">Coils</string>
     <string name="from">from</string>
     <string name="account">Account</string>
     <string name="user">User</string>
-    <string name="cancel">cancel</string>
+    <string name="cancel">Cancel</string>
     <string name="origin">origin</string>
+    <string name="usage">Usage</string>
+    <string name="transference">Transference</string>
+    <string name="origin_account">Origin Account</string>
+    <string name="description">Description</string>
+    <string name="business_logic_has_broken">a business logic has broken</string>
 </resources>

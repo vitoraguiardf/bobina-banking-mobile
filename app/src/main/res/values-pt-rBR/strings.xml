@@ -69,4 +69,9 @@
     <string name="user">Usuário</string>
     <string name="cancel">Cancelar</string>
     <string name="origin">Origem</string>
+    <string name="usage">Utilização</string>
+    <string name="transference">Transferência</string>
+    <string name="origin_account">Conta Origem</string>
+    <string name="description">Descrição</string>
+    <string name="business_logic_has_broken">uma lógica de negócios foi quebrada</string>
 </resources>

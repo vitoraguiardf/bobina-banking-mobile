@@ -74,4 +74,5 @@
     <string name="account">Account</string>
     <string name="user">User</string>
     <string name="cancel">cancel</string>
+    <string name="origin">origin</string>
 </resources>

@@ -71,6 +71,9 @@ class ConfirmationFragment : Fragment() {
                 binding.senderAccountName.text = senderAccount.name
             }
         }
+        binding.buttonConfirm.setOnClickListener { _ ->
+            sharedModel.transferenceForm.confirm()
+        }
         return binding.root
     }
 }

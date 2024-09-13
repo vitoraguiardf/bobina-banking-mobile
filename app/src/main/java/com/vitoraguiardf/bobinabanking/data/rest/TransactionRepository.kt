@@ -2,6 +2,7 @@ package com.vitoraguiardf.bobinabanking.data.rest
 
 import com.vitoraguiardf.bobinabanking.Singleton
 import com.vitoraguiardf.bobinabanking.data.entity.CoilTransaction
+import com.vitoraguiardf.bobinabanking.data.entity.Message
 import com.vitoraguiardf.bobinabanking.data.entity.User
 
 class TransactionRepository: AbstractRestRepository() {
@@ -14,6 +15,10 @@ class TransactionRepository: AbstractRestRepository() {
 
     suspend fun transactions(): Result<Array<CoilTransaction>> {
         return execute(retrofit.transactions())
+    }
+
+    suspend fun post(transaction: Transaction): Result<Message> {
+        return execute(retrofit.post(transaction))
     }
 
 }

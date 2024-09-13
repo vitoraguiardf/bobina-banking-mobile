@@ -87,9 +87,6 @@ class HomeActivity : AbstractAppCompatActivity<ActivityHomeBinding>() {
         binding.buttonSend.setOnClickListener { _ ->
             startTransaction(TransferenceScenarios.TRANSFERENCE)
         }
-
-        vmUserResume.resume()
-        viewModel.getData()
     }
 
     private fun startTransaction(scenario: TransferenceScenarios) {
@@ -100,6 +97,7 @@ class HomeActivity : AbstractAppCompatActivity<ActivityHomeBinding>() {
 
     override fun onPostResume() {
         super.onPostResume()
+        vmUserResume.resume()
         viewModel.getData()
     }
 }

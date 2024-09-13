@@ -67,7 +67,6 @@ class MainActivity : AbstractAppCompatActivity<ActivityMainBinding>() {
         }
         binding.actionSignUp.visibility = View.GONE
         binding.actionSignInContinue.visibility = View.GONE
-        viewModel.verifySession()
     }
 
     override fun onPostResume() {

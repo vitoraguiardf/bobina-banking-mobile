@@ -1,11 +1,8 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.BobinaBanking" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Base.Theme.BobinaBanking" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="buttonStyle">@style/PrimaryButton</item>
         <item name="imageButtonStyle">@style/PrimaryImageButton</item>
-    </style>
-    <style name="PrimaryButton" parent="Base.Widget.AppCompat.Button.Colored">
     </style>
     <style name="PrimaryImageButton" parent="Base.Widget.AppCompat.ImageButton">
         <item name="tint">@color/light</item>

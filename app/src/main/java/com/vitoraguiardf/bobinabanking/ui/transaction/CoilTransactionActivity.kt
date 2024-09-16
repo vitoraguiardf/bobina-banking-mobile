@@ -37,7 +37,7 @@ class CoilTransactionActivity : AbstractAppCompatActivity<ActivityCoilTransactio
                      *  - Confirmação da Transação (ConfirmationFragment) :: BY USER
                      */
                     TransferenceScenarios.USAGE -> {
-                        sharedModel.transferenceForm.setRecipient(null)
+                        sharedModel.transferenceForm.setType(3)
                         fragmentTransaction.replace(R.id.container, DetailsFragment.newInstance())
                     }
                     /** Transferência entre contas
@@ -46,6 +46,7 @@ class CoilTransactionActivity : AbstractAppCompatActivity<ActivityCoilTransactio
                      *  - Confirmação da Transação (ConfirmationFragment) :: BY USER
                      */
                     TransferenceScenarios.TRANSFERENCE -> {
+                        sharedModel.transferenceForm.setType(2)
                         fragmentTransaction.replace(R.id.container, RecipientFragment.newInstance())
                     }
                     /** Transferência entre contas - QrCode
@@ -54,6 +55,7 @@ class CoilTransactionActivity : AbstractAppCompatActivity<ActivityCoilTransactio
                      *  - Confirmação da Transação (ConfirmationFragment) :: BY USER
                      */
                     TransferenceScenarios.TRANSFERENCE_QRCODE -> {
+                        sharedModel.transferenceForm.setType(2)
                         fragmentTransaction.replace(R.id.container, QrCodeScanFragment.newInstance())
                     }
                 }.commitNow()

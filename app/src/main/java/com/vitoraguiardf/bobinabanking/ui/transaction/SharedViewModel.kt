@@ -29,13 +29,7 @@ class SharedViewModel(private val resources: Resources): ViewModel<Int, Message,
     }
 
     private fun validate(): Transaction {
-        return Transaction(
-            transactionTypeId = 2,
-            fromStorageId = transferenceForm.sender.value?.id,
-            toStorageId = transferenceForm.recipient.value?.id,
-            description = transferenceForm.description.value,
-            quantity = transferenceForm.quantity.value?: 0,
-        )
+        return transferenceForm.transaction()
     }
 
     companion object {

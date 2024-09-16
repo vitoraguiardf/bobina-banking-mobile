@@ -45,7 +45,7 @@ class DetailsFragment: Fragment() {
             }
             binding.listItems.adapter = adapter
         })
-        viewModel.getAccounts()
+        viewModel.getAccountsExcept(sharedModel.transferenceForm.recipient.value)
         binding.buttonConfirm.setOnClickListener {
             try {
                 val description: String = binding.inputDescription.text.toString()

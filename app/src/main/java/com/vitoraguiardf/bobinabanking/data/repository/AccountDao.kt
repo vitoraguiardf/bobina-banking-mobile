@@ -10,4 +10,7 @@ interface AccountDao: DaoRepository<Account, Int> {
     @Transaction
     @Query("SELECT * FROM Account ORDER BY ID DESC")
     fun findAll(): Array<Account>
+    @Transaction
+    @Query("SELECT * FROM Account WHERE ID <> :id ORDER BY ID DESC")
+    fun findAllExcept(id: Int): Array<Account>
 }

@@ -6,15 +6,16 @@ import com.vitoraguiardf.bobinabanking.data.entity.Account
 import com.vitoraguiardf.bobinabanking.utils.viewmodel.ViewModel
 
 class DetailsViewModel(private val resources: Resources) : ViewModel<Int, Array<Account>, Unit>() {
-    
-    fun getAccounts() {
+    fun getAccountsExcept(account: Account?) {
         doInBackground {
             var accounts: Array<Account>? = null
             Singleton.instance.runDatabase { database ->
-                accounts = database.accountDao().findAll()
+                accounts = when (account) {
+                    null -> database.accountDao().findAll()
+                    else -> database.accountDao().findAllExcept(account.id)
+                }
             }
             accounts?.let { success(it) }
         }
     }
-
 }
